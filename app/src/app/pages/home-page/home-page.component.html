@@ -1,0 +1,16 @@
+<div class="content">
+  <main>
+    <h1>Last blog posts</h1>
+    <div *ngIf="!isLoading" class="posts-container">
+      <div *ngFor="let post of postList; index as index">
+        <mat-divider *ngIf="index != 0"></mat-divider>
+        <app-post-card [post]="post"></app-post-card>
+      </div>
+    </div>
+    <div *ngIf="isLoading" class="posts-container">
+      <app-post-card-loading *ngFor="let post of postList"></app-post-card-loading>
+    </div>
+  </main>
+
+  <app-aside></app-aside>
+</div>

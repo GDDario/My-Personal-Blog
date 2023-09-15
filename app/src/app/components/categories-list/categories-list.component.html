@@ -1,0 +1,6 @@
+<h2>Categories</h2>
+<div class="categories-container">
+  <ul class="unselectable">
+    <li matRipple *ngFor="let category of categories" [style.backgroundColor]="category.getIsSelected() ? '#c9c9c9' : 'transparent'" (click)="selectCategory(category.getId())">{{ category.getName() }}</li>
+  </ul>
+</div>

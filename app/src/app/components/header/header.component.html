@@ -1,0 +1,20 @@
+<mat-toolbar color="primary" class="mat-toolbar">
+  <div class="full">
+    <nav>
+      <ul class="unselectable">
+        <li matRipple><a [routerLink]="['/']">Home</a></li>
+        <li matRipple><a [routerLink]="['/']">Reviews</a></li>
+        <li matRipple><a [routerLink]="['/']">Categories</a></li>
+        <li matRipple><a [routerLink]="['/']">Contact</a></li>
+        <li matRipple><a [routerLink]="['/']">About</a></li>
+      </ul>
+    </nav>
+
+    <div class="search-container">
+      <input type="text" placeholder="Type something.." #searchInput>
+      <button mat-icon-button aria-label="Search" (click)="onClick()">
+        <mat-icon>search</mat-icon>
+      </button>
+    </div>
+  </div>
+</mat-toolbar>

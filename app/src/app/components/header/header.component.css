@@ -1,0 +1,49 @@
+.full {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  padding: 0 200px 0 192px; /* Padding-left is 192 to subtract the button padding */
+}
+
+.full nav ul {
+  display: flex;
+  gap: 6px;
+}
+
+ul li a {
+  color: #fff;
+  text-decoration: none;
+  padding: 8px;
+  background-color: transparent;
+  font-weight: normal;
+  border-radius: 4px;
+}
+
+.search-container {
+  border-bottom: 1px solid #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.search-container input {
+  background-color: transparent;
+  border: none;
+  color: #fff;
+}
+
+mat-icon {
+  cursor: pointer;
+}
+
+button {
+  background-color: transparent;
+  border: none;
+  color: #fff;
+}
+
+.mat-toolbar {
+  padding: 0;
+}
+

@@ -1,0 +1,86 @@
+.loading-container {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.loading-container div {
+  background-color: gray;
+  border-radius: 6px;
+}
+
+.loading-title {
+  width: 40%;
+  height: 40px;
+}
+
+.loading-details {
+  width: 20%;
+  height: 20px;
+}
+
+.loading-image {
+  width: 100%;
+  height: 400px;
+}
+
+.loading-preview {
+  width: 100%;
+  height: 80px;
+}
+
+.loading-button {
+  width: 10%;
+  height: 30px;
+}
+
+.loading-container div {
+  background: linear-gradient(270deg, #9f9f9f, #a3a3a3, #8c8c8c, #9d9d9d, #ececec);
+  background-size: 1000% 1000%;
+
+  -webkit-animation: SkeletonLoadingAnimation 2s ease infinite;
+  -moz-animation: SkeletonLoadingAnimation 2s ease infinite;
+  -o-animation: SkeletonLoadingAnimation 2s ease infinite;
+  animation: SkeletonLoadingAnimation 2s ease infinite;
+}
+
+@-webkit-keyframes SkeletonLoadingAnimation {
+  0% {
+    background-color: hsl(200, 4%, 47%);
+  }
+
+  100% {
+    background-color: hsl(0, 0%, 49%);
+  }
+}
+
+@-moz-keyframes SkeletonLoadingAnimation {
+  0% {
+    background-color: hsl(200, 4%, 47%);
+  }
+
+  100% {
+    background-color: hsl(0, 0%, 49%);
+  }
+}
+
+@-o-keyframes SkeletonLoadingAnimation {
+  0% {
+    background-color: hsl(200, 4%, 47%);
+  }
+
+  100% {
+    background-color: hsl(0, 0%, 49%);
+  }
+}
+
+@keyframes SkeletonLoadingAnimation {
+  0% {
+    background-color: hsl(200, 4%, 47%);
+  }
+
+  100% {
+    background-color: hsl(0, 0%, 49%);
+  }
+}
