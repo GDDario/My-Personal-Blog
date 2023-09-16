@@ -1,3 +1,9 @@
+mat-toolbar {
+  position: fixed;
+  top: 0;
+  z-index: 100;
+}
+
 .full {
   display: flex;
   justify-content: space-between;
@@ -46,4 +52,3 @@ button {
 .mat-toolbar {
   padding: 0;
 }
-

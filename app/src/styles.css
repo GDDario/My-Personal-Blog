@@ -1,12 +1,16 @@
 /* You can add global styles to this file, and also import other style files */
 
 /* Material */
-html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 /* Material */
 
 * {
   box-sizing: border-box;
+}
+
+a {
+  text-decoration: none;
+  color: #000;
 }
 
 ul {
@@ -16,21 +20,21 @@ ul {
 }
 
 .content {
-  max-width: 1500px;
   display: flex;
-  justify-content: center;
-  gap: 28px;
+  justify-content: space-between;
+  gap: 52px;
   padding: 40px 200px;
-  min-height: calc(100vh - 64px); /* 64px of the header and x of the bottom*/
+  min-height: calc(100vh - 216px); /* 198px of the footer */
+  margin: 50px auto 0 auto;
 }
 
 .content main {
   flex-basis: 70%;
+  max-width: 700px;
 }
 
 .content app-aside {
   flex-basis: 30%;
-  background-color: rgb(255, 253, 240);
 }
 
 /* Makes the text unselectable */
@@ -40,4 +44,9 @@ ul {
   -moz-user-select: none;
   -ms-user-select: none;
   -o-user-select: none;
+}
+
+.content .unique {
+  flex-basis: 100%;
+  max-width: 100%;
 }

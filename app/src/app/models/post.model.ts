@@ -1,4 +1,4 @@
-import { Author } from "./author.model";
+import { Category } from "./categorie.model";
 
 export class Post {
   private title: string;
@@ -6,20 +6,20 @@ export class Post {
   private content: string;
   private date: Date;
   private editDate: Date;
-  private author: Author;
   private imageId: string;
+  private category: Category;
 
-  constructor({ title, date, editDate, author, description, content, imageId }: {
-    title?: string, date?: Date, editDate?: Date, author?: Author,
-    description?: string, content?: string, imageId?: string
+  constructor({ title, date, editDate, description, content, imageId, category }: {
+    title?: string, date?: Date, editDate?: Date,
+    description?: string, content?: string, imageId?: string, category?: Category
   }) {
     if (title != null) this.title = title;
     if (date != null) this.date = date;
     if (editDate != null) this.editDate = editDate;
-    if (author != null) this.author = author;
     if (description != null) this.description = description;
     if (content != null) this.content = content;
     if (imageId != null) this.imageId = imageId;
+    if (category != null) this.category = category;
   }
 
   public getTitle(): string {
@@ -43,13 +43,6 @@ export class Post {
     this.editDate = editDate;
   }
 
-  public getAuthor(): Author {
-    return this.author;
-  }
-  public setAuthor(author: Author): void {
-    this.author = author;
-  }
-
   public getDescription(): string {
     return this.description;
   }
@@ -69,6 +62,13 @@ export class Post {
   }
   public setImageId(imageId: string): void {
     this.imageId = imageId;
+  }
+
+  public getCategory(): Category {
+    return this.category;
+  }
+  public setCategory(category: Category): void {
+    this.category = category;
   }
 
   public getFormatedDate(): string {

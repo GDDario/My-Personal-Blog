@@ -1,0 +1,30 @@
+.category-posts {
+  position: relative;
+  overflow: hidden;
+}
+
+.categories-container {
+  display: flex;
+  flex-direction: column;
+  gap: 26px;
+}
+
+.posts-container {
+  width: min-content;
+  display: flex;
+  gap: 16px;
+}
+
+.previous {
+  position: absolute;
+  left: 30px;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.next {
+  position: absolute;
+  right: -33px;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}

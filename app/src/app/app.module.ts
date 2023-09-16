@@ -14,14 +14,19 @@ import { HomePageComponent } from './pages/home-page/home-page.component';
 import { AppRoutingModule } from './modules/app-routing.module';
 import { HeaderComponent } from './components/header/header.component';
 import { LayoutComponent } from './pages/layout.component';
-import { PostCardComponent } from './components/post-card/post-card.component';
+import { PostCardBigComponent } from './components/cards/post-card-big/post-card-big.component';
 import { HttpClientModule } from '@angular/common/http';
 import { PostCardLoadingComponent } from './components/loading/post-card-loading/post-card-loading.component';
-import { ProfileCardComponent } from './components/profile-card/profile-card.component';
+import { ProfileCardComponent } from './components/cards/profile-card/profile-card.component';
 import { CategoriesListComponent } from './components/categories-list/categories-list.component';
 import { AsideComponent } from './components/aside/aside.component';
 import { MatRippleModule } from '@angular/material/core';
 import { FooterComponent } from './components/footer/footer.component';
+import { CategoriesPageComponent } from './pages/categories/categories-page/categories-page.component';
+import { PostCardMiniComponent } from './components/cards/post-card-mini/post-card-mini.component';
+import { SlideNextDirective } from './directives/slide-next.directive';
+import { SlidePreviousDirective } from './directives/slide-previous.directive';
+import { CategoriesPostsPageComponent } from './pages/categories/categories-posts-page/categories-posts-page.component';
 
 @NgModule({
   declarations: [
@@ -30,13 +35,17 @@ import { FooterComponent } from './components/footer/footer.component';
     HomePageComponent,
     LayoutComponent,
     HeaderComponent,
-    PostCardComponent,
+    PostCardBigComponent,
     PostCardLoadingComponent,
     ProfileCardComponent,
     CategoriesListComponent,
     AsideComponent,
     FooterComponent,
-
+    CategoriesPageComponent,
+    PostCardMiniComponent,
+    SlideNextDirective,
+    SlidePreviousDirective,
+    CategoriesPostsPageComponent,
   ],
   imports: [
     HttpClientModule,

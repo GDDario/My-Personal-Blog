@@ -1,6 +1,6 @@
 <div class="content">
   <main>
-    <h1 class="main-title">Last blog posts <mat-icon>access_time</mat-icon></h1>
+    <h1 class="main-title">{{ "Posts of " + category.getName() }}</h1>
     <div *ngIf="!isLoading" class="posts-container">
       <div *ngFor="let post of postList; index as index">
         <mat-divider *ngIf="index != 0"></mat-divider>

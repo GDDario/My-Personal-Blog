@@ -1,12 +1,8 @@
 <div class="post-card-container">
+  <img [src]="'../../../assets/img/' + post.getImageId()" alt="Post image">
   <h2 class="post-title">{{ post.getTitle() }}</h2>
   <h3 class="post-details">
-    "Written by "
-    <a ></a>
+    {{ 'Written in ' + post.getFormatedDate() }}
   </h3>
-  <img [src]="'../../../assets/img/' + post.getImageId()" alt="Post image">
-  <div class="post-description">
-    <p>{{ post.getDescription() }}</p>
-  </div>
   <button mat-raised-button color="primary">See post</button>
 </div>

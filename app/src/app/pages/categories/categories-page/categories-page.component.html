@@ -1,0 +1,32 @@
+<div class="content">
+  <main class="unique">
+      <section class="categories-container">
+        <div *ngFor="let categoryPost of categoryPosts" class="category-posts">
+          <h2 (click)="seeMorePosts(categoryPost.category)">
+            {{ categoryPost.category.getName() }}
+          </h2>
+          <div class="posts-container">
+            <app-post-card-mini class="card" *ngFor="let post of categoryPost.posts" [post]="post"></app-post-card-mini>
+          </div>
+          <button
+            mat-raised-button
+            color="primary"
+            type="button"
+            class="previous"
+            appSlidePrevious
+          >
+            Prev
+          </button>
+          <button
+            mat-raised-button
+            color="primary"
+            type="button"
+            class="next"
+            appSlideNext
+          >
+            Next
+          </button>
+        </div>
+      </section>
+  </main>
+</div>
