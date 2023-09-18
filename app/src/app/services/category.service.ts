@@ -6,7 +6,7 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class CategoryService {
-  public observedCategory: Observable<Category>;
+  public categoryObservable: Observable<Category>;
 
   private categories: Category[] = [
     new Category({ id: 1, name: "Open Source" }),

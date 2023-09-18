@@ -2,10 +2,42 @@
   <div class="full">
     <nav>
       <ul class="unselectable">
-        <li matRipple><a [routerLink]="['/']">Home</a></li>
-        <li matRipple><a [routerLink]="['/categories']">Categories</a></li>
-        <li matRipple><a [routerLink]="['/']">Contact</a></li>
-        <li matRipple><a [routerLink]="['/']">About</a></li>
+        <li matRipple>
+          <a
+            [routerLink]="['/']"
+            routerLinkActive="active"
+            [routerLinkActiveOptions]="{exact: true}"
+            >
+            Home
+          </a>
+        </li>
+        <li matRipple>
+          <a
+            [routerLink]="['/categories']"
+            routerLinkActive="active"
+            [routerLinkActiveOptions]="{exact: true}"
+            >
+            Categories
+          </a>
+        </li>
+        <li matRipple>
+          <a
+            [routerLink]="['/contact']"
+            routerLinkActive="active"
+            [routerLinkActiveOptions]="{exact: true}"
+            >
+            Contact
+          </a>
+        </li>
+        <li matRipple>
+          <a
+            [routerLink]="['/']"
+            routerLinkActive="active"
+            [routerLinkActiveOptions]="{exact: true}"
+            >
+            About
+          </a>
+        </li>
       </ul>
     </nav>
 

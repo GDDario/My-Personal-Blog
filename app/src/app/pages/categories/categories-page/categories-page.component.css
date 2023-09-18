@@ -28,3 +28,8 @@
   top: 50%;
   transform: translate(-50%, -50%);
 }
+
+h2 {
+  display: inline-block;
+  cursor: pointer;
+}

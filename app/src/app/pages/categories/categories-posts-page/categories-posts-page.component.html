@@ -1,5 +1,5 @@
 <div class="content">
-  <main>
+  <main *ngIf="postList != []">
     <h1 class="main-title">{{ "Posts of " + category.getName() }}</h1>
     <div *ngIf="!isLoading" class="posts-container">
       <div *ngFor="let post of postList; index as index">

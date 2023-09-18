@@ -9,7 +9,8 @@ mat-toolbar {
   justify-content: space-between;
   align-items: center;
   width: 100%;
-  padding: 0 200px 0 192px; /* Padding-left is 192 to subtract the button padding */
+  /* Padding-left is 192 to subtract the button padding */
+  padding: 0 200px 0 192px;
 }
 
 .full nav ul {
@@ -25,6 +26,11 @@ ul li a {
   font-weight: normal;
   border-radius: 4px;
 }
+
+ul li a.active {
+  background-color: #0376bd;
+}
+
 
 .search-container {
   border-bottom: 1px solid #fff;

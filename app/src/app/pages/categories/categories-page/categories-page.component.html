@@ -2,7 +2,7 @@
   <main class="unique">
       <section class="categories-container">
         <div *ngFor="let categoryPost of categoryPosts" class="category-posts">
-          <h2 (click)="seeMorePosts(categoryPost.category)">
+          <h2 matRipple (click)="seeMorePosts(categoryPost.category)">
             {{ categoryPost.category.getName() }}
           </h2>
           <div class="posts-container">

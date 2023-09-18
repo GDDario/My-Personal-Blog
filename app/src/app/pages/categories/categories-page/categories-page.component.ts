@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { Observable } from 'rxjs';
+import { Observable, Subscriber, Subscription } from 'rxjs';
 import { Category } from 'src/app/models/categorie.model';
 import { Post } from 'src/app/models/post.model';
 import { CategoryService } from 'src/app/services/category.service';
@@ -28,9 +28,9 @@ export class CategoriesPageComponent implements OnInit {
   }
 
   public seeMorePosts(category: Category): void {
-    this.categoryService.observedCategory = new Observable(observer => {
-      observer.next(category);
-    });
+    //this.categoryService.categoryObservable = new Observable((subscriber: Subscriber<Category>) => {
+    //  subscriber.next(category);
+    //});
     this.router.navigate(["categories", category.getId()]);
   }
 }
