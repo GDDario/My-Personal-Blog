@@ -29,6 +29,7 @@ import { SlidePreviousDirective } from './directives/slide-previous.directive';
 import { CategoriesPostsPageComponent } from './pages/categories/categories-posts-page/categories-posts-page.component';
 import { ContactPageComponent } from './pages/contact-page/contact-page.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { AboutPageComponent } from './pages/about-page/about-page.component';
 
 @NgModule({
   declarations: [
@@ -49,6 +50,7 @@ import { ReactiveFormsModule } from '@angular/forms';
     SlidePreviousDirective,
     CategoriesPostsPageComponent,
     ContactPageComponent,
+    AboutPageComponent,
   ],
   imports: [
     HttpClientModule,
