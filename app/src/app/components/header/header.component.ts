@@ -11,7 +11,11 @@ export class HeaderComponent {
 
   constructor(private router: Router) { }
 
-  public onClick(): void {
-    this.searchInput.nativeElement.value = "";
-   }
+  public onSearch(): void {
+    let search: string = this.searchInput.nativeElement.value;
+
+    if (search != null) {
+      this.router.navigate(["/search"], { queryParams: { value: search } });
+    }
+  }
 }

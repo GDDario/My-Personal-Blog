@@ -8,6 +8,7 @@ import { CategoriesPageComponent } from "../pages/categories/categories-page/cat
 import { CategoriesPostsPageComponent } from "../pages/categories/categories-posts-page/categories-posts-page.component";
 import { ContactPageComponent } from "../pages/contact-page/contact-page.component";
 import { AboutPageComponent } from "../pages/about-page/about-page.component";
+import { SearchPageComponent } from "../pages/search-page/search-page.component";
 
 const appRoutes: Routes = [
   {
@@ -39,6 +40,10 @@ const appRoutes: Routes = [
         path: "about",
         component: AboutPageComponent
       },
+      {
+        path: "search",
+        component: SearchPageComponent
+      }
     ],
   },
   {

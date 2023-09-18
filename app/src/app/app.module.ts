@@ -30,6 +30,7 @@ import { CategoriesPostsPageComponent } from './pages/categories/categories-post
 import { ContactPageComponent } from './pages/contact-page/contact-page.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { AboutPageComponent } from './pages/about-page/about-page.component';
+import { SearchPageComponent } from './pages/search-page/search-page.component';
 
 @NgModule({
   declarations: [
@@ -51,6 +52,7 @@ import { AboutPageComponent } from './pages/about-page/about-page.component';
     CategoriesPostsPageComponent,
     ContactPageComponent,
     AboutPageComponent,
+    SearchPageComponent,
   ],
   imports: [
     HttpClientModule,

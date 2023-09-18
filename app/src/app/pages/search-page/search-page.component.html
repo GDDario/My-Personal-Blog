@@ -1,0 +1,9 @@
+<div class="content">
+  <main>
+    <h1>Search results for {{ search }}:</h1>
+    <app-post-card-big
+      *ngFor="let post of posts"
+      [post]="post"></app-post-card-big>>
+  </main>
+  <app-aside></app-aside>
+</div>

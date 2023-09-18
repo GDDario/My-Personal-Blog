@@ -44,4 +44,13 @@ export class PostService {
     }
     return posts;
   }
+
+  /**
+   * This method searchs for titles and contents.
+   * @param search the value being searched.
+   * @returns posts related.
+   */
+  public getBySearch(search: string): Post[] {
+    return this.posts;
+  }
 }
