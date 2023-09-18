@@ -1,0 +1,48 @@
+<div class="content">
+  <main class="unique">
+    <h1>Send a hi to me!</h1>
+    <form [formGroup]="contactForm" (ngSubmit)="onSubmit()">
+      <div class="inner-container">
+        <mat-form-field>
+          <mat-label>Name</mat-label>
+          <input
+            formControlName="name"
+            #name
+            matInput
+            >
+          <mat-error *ngIf="contactForm.get('name').invalid">You must enter a value.</mat-error>
+        </mat-form-field>
+        <mat-form-field>
+          <mat-label>Email</mat-label>
+          <input
+            #email
+            formControlName="email"
+            matInput
+            >
+          <mat-error *ngIf="contactForm.get('email').invalid">{{ getEmailError() }}</mat-error>
+        </mat-form-field>
+        <mat-form-field>
+          <mat-label>Message</mat-label>
+          <textarea
+            matInput
+            #message
+            rows="6"
+            formControlName="message"
+            ></textarea>
+          <mat-error *ngIf="contactForm.get('message').invalid">You must enter a value.</mat-error>
+        </mat-form-field>
+        <div class="button-container">
+          <button
+            type="submit"
+            color="primary"
+            [disabled]="contactForm.invalid"
+            mat-raised-button
+            >
+            Send
+            <mat-icon iconPositionEnd>send</mat-icon>
+          </button>
+        </div>
+      </div>
+    </form>
+  </main>
+</div>

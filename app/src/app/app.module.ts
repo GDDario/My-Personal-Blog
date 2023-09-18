@@ -27,6 +27,8 @@ import { PostCardMiniComponent } from './components/cards/post-card-mini/post-ca
 import { SlideNextDirective } from './directives/slide-next.directive';
 import { SlidePreviousDirective } from './directives/slide-previous.directive';
 import { CategoriesPostsPageComponent } from './pages/categories/categories-posts-page/categories-posts-page.component';
+import { ContactPageComponent } from './pages/contact-page/contact-page.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -46,6 +48,7 @@ import { CategoriesPostsPageComponent } from './pages/categories/categories-post
     SlideNextDirective,
     SlidePreviousDirective,
     CategoriesPostsPageComponent,
+    ContactPageComponent,
   ],
   imports: [
     HttpClientModule,
@@ -58,7 +61,8 @@ import { CategoriesPostsPageComponent } from './pages/categories/categories-post
     MatInputModule,
     MatRippleModule,
     MatDividerModule,
-    MatButtonModule
+    MatButtonModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

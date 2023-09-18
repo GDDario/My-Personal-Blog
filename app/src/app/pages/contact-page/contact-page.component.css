@@ -1,0 +1,36 @@
+h1 {
+  text-align: center;
+  display: block;
+}
+
+form {
+  height: calc(100% - 48px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.inner-container {
+  width: min-content;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+mat-form-field {
+  width: 600px;
+}
+
+.button-container {
+  position: relative;
+}
+
+button {
+  float: left;
+  width: 110px;
+}
+
+mat-icon {
+  line-height: 1rem;
+}

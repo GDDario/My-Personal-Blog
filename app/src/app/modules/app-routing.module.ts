@@ -6,6 +6,7 @@ import { LayoutComponent } from "../pages/layout.component";
 import { HomePageComponent } from "../pages/home-page/home-page.component";
 import { CategoriesPageComponent } from "../pages/categories/categories-page/categories-page.component";
 import { CategoriesPostsPageComponent } from "../pages/categories/categories-posts-page/categories-posts-page.component";
+import { ContactPageComponent } from "../pages/contact-page/contact-page.component";
 
 const appRoutes: Routes = [
   {
@@ -28,7 +29,11 @@ const appRoutes: Routes = [
             component: CategoriesPostsPageComponent
           }
         ]
-      }
+      },
+      {
+        path: "contact",
+        component: ContactPageComponent
+      },
     ],
   },
   {
