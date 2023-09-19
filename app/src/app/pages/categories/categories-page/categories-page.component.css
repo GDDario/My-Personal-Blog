@@ -9,7 +9,7 @@
   gap: 26px;
 }
 
-.posts-container {
+.mini-posts-container {
   width: min-content;
   display: flex;
   gap: 16px;

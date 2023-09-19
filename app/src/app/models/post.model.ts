@@ -1,6 +1,7 @@
 import { Category } from "./categorie.model";
 
 export class Post {
+  private id: number = 0;
   private title: string;
   private description: string;
   private content: string;
@@ -8,11 +9,13 @@ export class Post {
   private editDate: Date;
   private imageId: string;
   private category: Category;
+  private urlPath: string;
 
-  constructor({ title, date, editDate, description, content, imageId, category }: {
-    title?: string, date?: Date, editDate?: Date,
-    description?: string, content?: string, imageId?: string, category?: Category
+  constructor({ id, title, date, editDate, description, content, imageId, category, urlPath }: {
+    id?: number, title?: string, date?: Date, editDate?: Date,
+    description?: string, content?: string, imageId?: string, category?: Category, urlPath?: string
   }) {
+    if (id != null) this.id = id;
     if (title != null) this.title = title;
     if (date != null) this.date = date;
     if (editDate != null) this.editDate = editDate;
@@ -20,6 +23,14 @@ export class Post {
     if (content != null) this.content = content;
     if (imageId != null) this.imageId = imageId;
     if (category != null) this.category = category;
+    if (urlPath != null) this.urlPath = urlPath;
+  }
+
+  public getId(): number {
+    return this.id;
+  }
+  public setId(id: number): void {
+    this.id = id;
   }
 
   public getTitle(): string {
@@ -69,6 +80,13 @@ export class Post {
   }
   public setCategory(category: Category): void {
     this.category = category;
+  }
+
+  public getUrlPath(): string {
+    return this.urlPath;
+  }
+  public setUrlPath(urlPath: string): void {
+    this.urlPath = urlPath;
   }
 
   public getFormatedDate(): string {

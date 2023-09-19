@@ -1,0 +1,11 @@
+<div class="content">
+  <main>
+    <h1>{{ post.getTitle() }}</h1>
+    <h3 class="post-details">
+      {{ 'Written in ' + post.getFormatedDate() }}
+    </h3>
+    <img [src]="'../../../assets/img/' + post.getImageId()" alt="Post image">
+    <div class="post-content" #postContent [innerHTML]="content"></div>
+  </main>
+  <app-aside></app-aside>
+</div>

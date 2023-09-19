@@ -3,10 +3,3 @@
   align-items: center;
   gap: 8px;
 }
-
-.posts-container {
-  display: flex;
-  flex-direction: column;
-  gap: 24px;
-}
-

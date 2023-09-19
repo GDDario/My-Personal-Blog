@@ -42,8 +42,8 @@
     </nav>
 
     <div class="search-container">
-      <input type="text" placeholder="Type something.." #searchInput>
-      <button mat-icon-button aria-label="Search" (click)="onSearch()">
+      <input type="text" placeholder="Type something.." #searchInput (keyup)="onSearch($event)">
+      <button mat-icon-button aria-label="Search" (click)="onSearch($event)">
         <mat-icon>search</mat-icon>
       </button>
     </div>

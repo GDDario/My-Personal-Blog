@@ -9,6 +9,7 @@ import { CategoriesPostsPageComponent } from "../pages/categories/categories-pos
 import { ContactPageComponent } from "../pages/contact-page/contact-page.component";
 import { AboutPageComponent } from "../pages/about-page/about-page.component";
 import { SearchPageComponent } from "../pages/search-page/search-page.component";
+import { PostPageComponent } from "../pages/post-page/post-page.component";
 
 const appRoutes: Routes = [
   {
@@ -43,7 +44,11 @@ const appRoutes: Routes = [
       {
         path: "search",
         component: SearchPageComponent
-      }
+      },
+      {
+        path: "post/:urlPath",
+        component: PostPageComponent
+      },
     ],
   },
   {

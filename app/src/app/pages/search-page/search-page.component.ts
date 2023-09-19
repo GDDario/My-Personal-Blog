@@ -11,15 +11,15 @@ import { PostService } from 'src/app/services/post.service';
 export class SearchPageComponent implements OnInit {
   public search: string;
   public posts: Post[];
+  public isLoading: boolean = true;
 
   constructor(private activatedRoute: ActivatedRoute, private postService: PostService) { }
 
   public ngOnInit(): void {
+    this.isLoading = false;
     this.activatedRoute.queryParams.subscribe((queryParams: Params) => {
       this.search = queryParams["value"];
       this.posts = this.postService.getBySearch(this.search);
     });
-
-
   }
 }
