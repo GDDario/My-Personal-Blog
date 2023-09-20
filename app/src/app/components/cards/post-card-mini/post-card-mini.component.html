@@ -4,5 +4,7 @@
   <h3 class="post-details">
     {{ 'Written in ' + post.getFormatedDate() }}
   </h3>
-  <button mat-raised-button color="primary">See post</button>
+  <a [routerLink]="['/post', post.getUrlPath()]">
+    <button mat-raised-button color="primary">See post</button>
+  </a>
 </div>

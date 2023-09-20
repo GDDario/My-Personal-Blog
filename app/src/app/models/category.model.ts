@@ -1,6 +1,7 @@
 export class Category {
   private id: number;
   private name: string;
+  // Front-end only
   private isSelected: boolean = false;
 
   constructor({id, name}: {id?: number, name?: string}) {

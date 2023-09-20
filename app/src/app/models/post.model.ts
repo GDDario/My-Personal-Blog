@@ -1,4 +1,4 @@
-import { Category } from "./categorie.model";
+import { Category } from "./category.model";
 
 export class Post {
   private id: number = 0;

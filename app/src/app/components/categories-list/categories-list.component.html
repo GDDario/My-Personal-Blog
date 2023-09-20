@@ -6,7 +6,7 @@
       *ngFor="let category of categories"
       class="unselectable"
       [style.backgroundColor]="category.getIsSelected() ? '#c9c9c9' : 'transparent'"
-      (click)="handleClick(category.getId())"
+      (click)="handleClick(category)"
     >
       {{ category.getName() }}
     </li>
