@@ -32,19 +32,23 @@ ul li a.active {
 }
 
 
-.search-container {
-  border-bottom: 1px solid #fff;
+.right-container {
   display: flex;
   justify-content: center;
   align-items: center;
+  gap: 48px;
 }
 
-.search-container input {
+.right-container input {
   background-color: transparent;
   border: none;
   color: #fff;
   height: 36px;
   font-size: 1rem;
+}
+
+.right-container .input-container {
+  border-bottom: 1px solid #fff;
 }
 
 mat-icon {
@@ -59,4 +63,67 @@ button {
 
 .mat-toolbar {
   padding: 0;
+}
+
+.right-container .profile {
+  padding: 8px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.profile-container {
+  position: relative;
+}
+
+.right-container .profile-container img {
+  width: 40px;
+}
+
+
+.profile-name {
+  font-size: 1.1rem;
+}
+
+.profile-nav {
+  position: absolute;
+  width: 100%;
+  top: calc(100% + 4px);
+  left: 0;
+  display: none;
+  background-color: #fff;
+  border-radius: 0px 0px 4px 4px;
+  border: 1px solid #aaa;
+  border-top: none;
+}
+
+.profile-nav.opened {
+  display: block;
+}
+
+.profile-nav ul {
+  flex-direction: column;
+  gap: 0px !important;
+}
+
+.profile-nav a {
+  cursor: pointer;
+  padding: 5px 10px;
+}
+.profile-nav a:not(:last-of-type) {
+  border-bottom: 1px solid #aaa;
+}
+
+.profile-nav a {
+  background-color: #3f51b5;
+  font-size: 0.9rem;
+  font-weight: normal;
+  color: #fff;
+}
+
+.profile-nav li {
+  margin: 0;
 }

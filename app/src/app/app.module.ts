@@ -33,6 +33,7 @@ import { AboutPageComponent } from './pages/about-page/about-page.component';
 import { SearchPageComponent } from './pages/search-page/search-page.component';
 import { PostsContainerComponent } from './components/posts-container/posts-container.component';
 import { PostPageComponent } from './pages/post-page/post-page.component';
+import { ProfileMenuDirective } from './directives/profile-menu.directive';
 
 @NgModule({
   declarations: [
@@ -57,6 +58,7 @@ import { PostPageComponent } from './pages/post-page/post-page.component';
     SearchPageComponent,
     PostsContainerComponent,
     PostPageComponent,
+    ProfileMenuDirective
   ],
   imports: [
     HttpClientModule,
