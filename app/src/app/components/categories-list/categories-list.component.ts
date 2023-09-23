@@ -11,7 +11,7 @@ import { CategoryService } from 'src/app/services/category.service';
 })
 export class CategoriesListComponent implements OnInit, OnDestroy {
   public categories: Category[];
-  private observable: Subscription;
+  private subscription: Subscription;
 
   constructor(private categoryService: CategoryService, private router: Router) { }
 
@@ -20,7 +20,7 @@ export class CategoriesListComponent implements OnInit, OnDestroy {
       this.categories = categories;
     });
 
-    this.observable = this.categoryService.categorySubject.subscribe((category: Category) => {
+    this.subscription = this.categoryService.categorySubject.subscribe((category: Category) => {
       this.categoryService.selectCategory(category.getId());
     });
   }
@@ -31,6 +31,6 @@ export class CategoriesListComponent implements OnInit, OnDestroy {
   }
 
   public ngOnDestroy(): void {
-    this.observable.unsubscribe();
+    this.subscription.unsubscribe();
   }
 }

@@ -33,7 +33,7 @@
         </button>
       </div>
 
-      <div class="profile-container unselectable" appProfileMenu>
+      <div *ngIf="isLoggedIn" class="profile-container unselectable" appProfileMenu>
         <div class="profile" matRipple>
           <img src="../../../assets/img/default-user-icon.png" alt="Your profile">
           <span class="profile-name">Profile name</span>
@@ -52,6 +52,13 @@
             </a>
           </ul>
         </nav>
+      </div>
+
+      <div *ngIf="!isLoggedIn" class="profile-container unselectable">
+        <div class="profile" matRipple>
+          <img src="../../../assets/img/default-user-icon.png" alt="Your profile">
+          <span class="profile-name">Login</span>
+        </div>
       </div>
     </div>
   </div>

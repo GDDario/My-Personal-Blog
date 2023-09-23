@@ -6,16 +6,17 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 
 @Entity
-public class Category {
+public class Role {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	private String name;
-	
-	public Category() {
+
+	public Role() {
+
 	}
 
-	public Category(long id, String name) {
+	public Role(Long id, String name) {
 		super();
 		this.id = id;
 		this.name = name;

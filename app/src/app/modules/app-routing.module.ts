@@ -1,7 +1,6 @@
 import { RouterModule, Routes } from "@angular/router";
 import { NgModule } from "@angular/core";
 
-import { LoginPageComponent } from "../pages/login-page/login-page.component";
 import { LayoutComponent } from "../pages/layout.component";
 import { HomePageComponent } from "../pages/home-page/home-page.component";
 import { CategoriesPageComponent } from "../pages/categories/categories-page/categories-page.component";
@@ -50,10 +49,6 @@ const appRoutes: Routes = [
         component: PostPageComponent
       },
     ],
-  },
-  {
-    path: 'login',
-    component: LoginPageComponent
   },
 ];
 

@@ -1,23 +1,32 @@
 package dario.gabriel.mypersonalblog.controller;
 
-import java.util.ArrayList;
+import java.util.List;
 
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import dario.gabriel.mypersonalblog.model.Post;
+import dario.gabriel.mypersonalblog.service.PostService;
+import lombok.RequiredArgsConstructor;
 
 @RestController
+@RequiredArgsConstructor
 public class PostController {
 	
+	private final PostService postService;
+	
 	@GetMapping("/post")
-	public ArrayList<Post> getPost() {
-		ArrayList<Post> posts = new ArrayList<>();
-		Post post = new Post();
-		post.setId(1);
-		post.setTitle("Open Source 1");
-		post.setUrlPath("open-source-1");
-		posts.add(post);
-		return posts;
+	public List<Post> getPost() {
+		return this.postService.getAll();
+	}
+	
+	@GetMapping("/post/{id}")
+	@ResponseBody
+	public Post getPost(@PathVariable(value = "id") long id) {
+		Post post = this.postService.getByid(id);
+		System.out.println("Searching for" + id);
+		return post;
 	}
 }

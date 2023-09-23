@@ -3,30 +3,31 @@ package dario.gabriel.mypersonalblog.model;
 import java.time.LocalDateTime;
 
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.ManyToOne;	
+import jakarta.persistence.ManyToOne;
 
 @Entity
 public class Post {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private long id;
+	private Long id;
 	private String title;
 	private String description;
 	private String content;
 	private LocalDateTime date;
 	private LocalDateTime editedDate;
 	private String imageId;
-	@ManyToOne
+	@ManyToOne(fetch = FetchType.EAGER)
 	private Category category;
-	private String urlPath;	
+	private String urlPath;
 
 	public Post() {
 	}
 
-	public Post(long id, String title, String description, String content, LocalDateTime date, LocalDateTime editedDate,
+	public Post(Long id, String title, String description, String content, LocalDateTime date, LocalDateTime editedDate,
 			String imageId, Category category, String urlPath) {
 		super();
 		this.id = id;
@@ -44,7 +45,7 @@ public class Post {
 		return id;
 	}
 
-	public void setId(long id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 

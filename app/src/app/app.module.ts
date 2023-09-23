@@ -9,7 +9,6 @@ import { MatButtonModule } from "@angular/material/button";
 
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { LoginPageComponent } from './pages/login-page/login-page.component';
 import { HomePageComponent } from './pages/home-page/home-page.component';
 import { AppRoutingModule } from './modules/app-routing.module';
 import { HeaderComponent } from './components/header/header.component';
@@ -38,7 +37,6 @@ import { ProfileMenuDirective } from './directives/profile-menu.directive';
 @NgModule({
   declarations: [
     AppComponent,
-    LoginPageComponent,
     HomePageComponent,
     LayoutComponent,
     HeaderComponent,
