@@ -8,9 +8,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import dario.gabriel.mypersonalblog.service.AuthenticationService;
-import dario.gabriel.mypersonalblog.util.AuthenticationRequest;
-import dario.gabriel.mypersonalblog.util.AuthenticationResponse;
-import dario.gabriel.mypersonalblog.util.RegisterRequest;
+import dario.gabriel.mypersonalblog.model.httpResponses.AuthenticationRequest;
+import dario.gabriel.mypersonalblog.model.httpResponses.AuthenticationResponse;
+import dario.gabriel.mypersonalblog.model.httpResponses.RegisterRequest;
 import lombok.RequiredArgsConstructor;
 
 @RestController
@@ -27,7 +27,7 @@ public class AuthenticationController {
 	}
 
 	@PostMapping("/authenticate")
-	public ResponseEntity<AuthenticationResponse> register(@RequestBody AuthenticationRequest request) {
+	public ResponseEntity<AuthenticationResponse> authenticate(@RequestBody AuthenticationRequest request) {
 		return ResponseEntity.ok(authenticationService.authenticate(request));
 	}
 }

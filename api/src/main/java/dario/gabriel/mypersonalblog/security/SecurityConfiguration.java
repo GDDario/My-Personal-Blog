@@ -19,10 +19,10 @@ import lombok.RequiredArgsConstructor;
 @EnableWebMvc
 @RequiredArgsConstructor
 public class SecurityConfiguration implements WebMvcConfigurer {
-	
+
 	private final JwtAuthenticationFilter jwtAuthenticationFilter;
 	private final AuthenticationProvider authenticationProvider;
-	
+
 	@Bean
 	public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
 		http.csrf().disable().authorizeHttpRequests().requestMatchers("auth/**").permitAll()
@@ -31,7 +31,7 @@ public class SecurityConfiguration implements WebMvcConfigurer {
 		.addFilterBefore(jwtAuthenticationFilter, UsernamePasswordAuthenticationFilter.class);
 		return http.build();
 	}
-	
+
 	public void addCorsMappings(CorsRegistry registry) {
 		registry.addMapping("/**")
         .allowedOrigins("http://localhost:4200")

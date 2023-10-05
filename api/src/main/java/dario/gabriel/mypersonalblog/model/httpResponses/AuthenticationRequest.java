@@ -1,4 +1,4 @@
-package dario.gabriel.mypersonalblog.util;
+package dario.gabriel.mypersonalblog.model.httpResponses;
 
 public class AuthenticationRequest {
 	private String email;

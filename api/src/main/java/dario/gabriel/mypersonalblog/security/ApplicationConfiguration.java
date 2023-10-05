@@ -22,10 +22,10 @@ public class ApplicationConfiguration {
 	
 	@Bean
 	public UserDetailsService userDetailsService() {
-		return username -> userRepository.findByEmail(username)
+		return username -> userRepository.findByUsername(username)
 				.orElseThrow(() -> new UsernameNotFoundException("User not found"));
 	}
-	
+
 	@Bean
 	public AuthenticationProvider authenticationProvider() {
 		 DaoAuthenticationProvider authenticationProvider = new DaoAuthenticationProvider();
@@ -33,7 +33,7 @@ public class ApplicationConfiguration {
 		 authenticationProvider.setPasswordEncoder(passwordEncoder());
 		 return authenticationProvider;
 	}
-	
+
 	@Bean AuthenticationManager authenticationManager(AuthenticationConfiguration config) throws Exception {
 		return config.getAuthenticationManager();
 	}
