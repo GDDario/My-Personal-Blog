@@ -2,6 +2,7 @@ package dario.gabriel.mypersonalblog.controller;
 
 import dario.gabriel.mypersonalblog.model.Role;
 import dario.gabriel.mypersonalblog.model.User;
+import dario.gabriel.mypersonalblog.service.JwtService;
 import dario.gabriel.mypersonalblog.service.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -16,6 +17,7 @@ import java.util.Optional;
 @RequiredArgsConstructor
 public class UserController {
     private final UserService userService;
+    private final JwtService jwtService;
 
     @GetMapping("/user")
     public ResponseEntity<List<User>> getUsers(@RequestParam(defaultValue = "1") int page) {
@@ -26,8 +28,19 @@ public class UserController {
         return ResponseEntity.ok().body(userService.getUsers(page));
     }
 
+    @GetMapping("/user/auth")
+    public ResponseEntity<User> getUserByJwt(@RequestHeader("Authorization") String authorizationHeader) {
+        String jwt = authorizationHeader.substring(7);
+        String username = jwtService.extractUsername(jwt);
+        User user = userService.getUserByUsername(username);
+        if (user == null) {
+            return ResponseEntity.notFound().build();
+        }
+        return ResponseEntity.ok().body(user);
+    }
+
     @GetMapping("/user/{userId}")
-    public ResponseEntity<?> getUsers(@PathVariable long userId) {
+    public ResponseEntity<?> getUserById(@PathVariable long userId) {
         Optional<User> user = userService.getUserById(userId);
         if (user.isEmpty()) {
             return ResponseEntity.notFound().build();

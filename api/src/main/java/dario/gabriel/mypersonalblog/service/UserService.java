@@ -49,4 +49,8 @@ public class UserService {
     public List<User> getUsers(int page) {
         return userRepository.findAll(PaginationUtil.normalizePage(page));
     }
+
+    public User getUserByUsername(String username) {
+        return userRepository.findByUsername(username).orElse(null);
+    }
 }
