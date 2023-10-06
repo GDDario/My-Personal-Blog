@@ -69,10 +69,10 @@ public class CategoryController {
     public ResponseEntity<MessageResponse> deleteCategory(@PathVariable long categoryId) {
         MessageResponse messageResponse = new MessageResponse("Category not found.");
         boolean isDeleted = categoryService.deleteCategory(categoryId);
-        if (isDeleted) {
-            messageResponse.setMessage("Deleted successfully!");
-            return ResponseEntity.ok().body(messageResponse);
+        if (!isDeleted) {
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(messageResponse);
         }
-        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(messageResponse);
+        messageResponse.setMessage("Deleted successfully!");
+        return ResponseEntity.ok().body(messageResponse);
     }
 }

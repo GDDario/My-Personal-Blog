@@ -2,12 +2,10 @@ package dario.gabriel.mypersonalblog.model;
 
 import java.time.LocalDateTime;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.FetchType;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.ManyToOne;
+import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+import jakarta.persistence.*;
+import org.hibernate.annotations.CreationTimestamp;
 
 @Entity
 public class Post {
@@ -17,18 +15,22 @@ public class Post {
 	private String title;
 	private String description;
 	private String content;
-	private LocalDateTime date;
+	@CreationTimestamp
+	@JsonFormat(pattern="yyyy-MM-dd HH:mm:ss")
+	private LocalDateTime date = LocalDateTime.now();
+	@JsonFormat(pattern="yyyy-MM-dd HH:mm:ss")
 	private LocalDateTime editedDate;
 	private String imageId;
 	@ManyToOne(fetch = FetchType.EAGER)
+	@JoinColumn(name = "category_id")
 	private Category category;
-	private String urlPath;
+	private String urlParam;
 
 	public Post() {
 	}
 
 	public Post(Long id, String title, String description, String content, LocalDateTime date, LocalDateTime editedDate,
-			String imageId, Category category, String urlPath) {
+			String imageId, Category category, String urlParam) {
 		super();
 		this.id = id;
 		this.title = title;
@@ -38,7 +40,7 @@ public class Post {
 		this.editedDate = editedDate;
 		this.imageId = imageId;
 		this.category = category;
-		this.urlPath = urlPath;
+		this.urlParam = urlParam;
 	}
 
 	public long getId() {
@@ -105,11 +107,11 @@ public class Post {
 		this.category = category;
 	}
 
-	public String getUrlPath() {
-		return urlPath;
+	public String getUrlParam() {
+		return urlParam;
 	}
 
-	public void setUrlPath(String urlPath) {
-		this.urlPath = urlPath;
+	public void setUrlParam(String urlParam) {
+		this.urlParam = urlParam;
 	}
 }
