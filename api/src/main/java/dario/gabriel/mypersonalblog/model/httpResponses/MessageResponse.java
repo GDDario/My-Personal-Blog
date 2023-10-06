@@ -3,10 +3,10 @@ package dario.gabriel.mypersonalblog.model.httpResponses;
 import lombok.Builder;
 
 @Builder
-public class MessageErrorResponse {
+public class MessageResponse {
     private String message;
 
-    public MessageErrorResponse(String message) {
+    public MessageResponse(String message) {
         this.message = message;
     }
 

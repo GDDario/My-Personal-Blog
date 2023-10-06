@@ -1,6 +1,6 @@
 package dario.gabriel.mypersonalblog.util;
 
-import dario.gabriel.mypersonalblog.model.httpResponses.MessageErrorResponse;
+import dario.gabriel.mypersonalblog.model.httpResponses.MessageResponse;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import org.springframework.http.HttpStatus;
@@ -22,16 +22,16 @@ public class CustomExceptionHandler {
     protected ResponseEntity<?> handleNoBodyRequest(
             HttpMessageNotReadableException ex, HttpServletRequest request, HttpServletResponse response, @Nullable Object handler)
             throws IOException {
-        MessageErrorResponse messageErrorResponse = new MessageErrorResponse("Please send a properly request body.");
-        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(messageErrorResponse);
+        MessageResponse messageResponse = new MessageResponse("Please send a properly request body.");
+        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(messageResponse);
     }
 
     @ExceptionHandler(value = SQLIntegrityConstraintViolationException.class)
     protected ResponseEntity<?> handleEmptyJsonRequest(
             SQLIntegrityConstraintViolationException ex, HttpServletRequest request, HttpServletResponse response, @Nullable Object handler)
             throws IOException {
-        MessageErrorResponse messageErrorResponse = new MessageErrorResponse("Please send a properly json body.");
-        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(messageErrorResponse);
+        MessageResponse messageResponse = new MessageResponse("Please send a properly json body.");
+        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(messageResponse);
     }
 
 //    @ExceptionHandler(value = ExpiredJwtException.class)
