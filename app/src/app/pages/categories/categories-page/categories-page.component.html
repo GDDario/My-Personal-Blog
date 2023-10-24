@@ -2,6 +2,7 @@
   <main class="unique">
       <section class="categories-container">
         <div *ngFor="let categoryPost of categoryPosts" class="category-posts">
+          <div *ngIf="categoryPost.posts.length > 0">
           <h2 matRipple (click)="seeMorePosts(categoryPost.category)">
             {{ categoryPost.category.getName() }}
           </h2>
@@ -26,6 +27,7 @@
           >
             Next
           </button>
+        </div>
         </div>
       </section>
   </main>

@@ -1,0 +1,74 @@
+<div class="modal-body" appLoginRegister>
+  <h1 mat-dialog-title class="unselectable">
+    <span class="toggle-mode login">Login</span>/<span class="toggle-mode register">Register</span>
+  </h1>
+
+  <form class="loginForm" [formGroup]="loginForm" (ngSubmit)="login()" #VCLoginForm>
+    <mat-dialog-content>
+      <mat-form-field>
+        <mat-label>Email</mat-label>
+        <input formControlName="email" #email matInput>
+        <mat-error *ngIf="loginForm.get('email').invalid">You must enter a value.</mat-error>
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>Password</mat-label>
+        <input formControlName="password" #password matInput [type]="loginPasswordHide ? 'password' : 'text'">
+        <button mat-icon-button matSuffix (click)="loginPasswordHide = !loginPasswordHide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="loginPasswordHide">
+          <mat-icon>{{loginPasswordHide ? 'visibility_off' : 'visibility'}}</mat-icon>
+        </button>
+        <mat-error *ngIf="loginForm.get('password').invalid">You must enter a value.</mat-error>
+      </mat-form-field>
+
+      <button type="submit" color="primary" [disabled]="loginForm.invalid" mat-raised-button>
+        Login
+        <mat-icon iconPositionEnd>send</mat-icon>
+      </button>
+    </mat-dialog-content>
+  </form>
+
+  <form class="registerForm" [formGroup]="registerForm" (ngSubmit)="login()" #VCRegisterForm>
+    <mat-dialog-content>
+      <mat-form-field>
+        <mat-label>Full name</mat-label>
+        <input formControlName="fullName" #fullName matInput>
+        <mat-error *ngIf="registerForm.get('fullName').invalid">You must enter a value.</mat-error>
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>Username</mat-label>
+        <input formControlName="username" #username matInput>
+        <mat-error *ngIf="registerForm.get('username').invalid">You must enter a value.</mat-error>
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>Email</mat-label>
+        <input #email formControlName="email" matInput>
+        <mat-error *ngIf="registerForm.get('email').invalid">{{ getEmailError() }}</mat-error>
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>Password</mat-label>
+        <input #password formControlName="password" matInput [type]="registerPasswordHide ? 'password' : 'text'">
+        <button mat-icon-button matSuffix (click)="registerPasswordHide = !registerPasswordHide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="registerPasswordHide">
+          <mat-icon>{{registerPasswordHide ? 'visibility_off' : 'visibility'}}</mat-icon>
+        </button>
+        <mat-error *ngIf="registerForm.get('password').invalid">{{ getEmailError() }}</mat-error>
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>Repeat password</mat-label>
+        <input #repeadPassword formControlName="repeatPassword" matInput [type]="repeatRegisterPasswordHide ? 'password' : 'text'">
+        <button mat-icon-button matSuffix (click)="repeatRegisterPasswordHide = !repeatRegisterPasswordHide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="repeatRegisterPasswordHide">
+          <mat-icon>{{repeatRegisterPasswordHide ? 'visibility_off' : 'visibility'}}</mat-icon>
+        </button>
+        <mat-error *ngIf="registerForm.get('repeatPassword').invalid">{{ getEmailError() }}</mat-error>
+      </mat-form-field>
+
+      <button type="submit" color="primary" [disabled]="registerForm.invalid" mat-raised-button>
+        Register
+        <mat-icon iconPositionEnd>send</mat-icon>
+      </button>
+    </mat-dialog-content>
+
+  </form>
+
+  <mat-dialog-actions>
+    <button mat-button (click)="close()">Close</button>
+  </mat-dialog-actions>
+</div>

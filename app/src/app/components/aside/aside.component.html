@@ -1,5 +1,5 @@
 <aside>
-  <app-profile-card></app-profile-card>
-  <mat-divider></mat-divider>
+  <app-profile-card *ngIf="user != null"></app-profile-card>
+  <mat-divider *ngIf="user != null"></mat-divider>
   <app-categories-list></app-categories-list>
 </aside>

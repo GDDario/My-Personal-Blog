@@ -9,6 +9,11 @@ import { ContactPageComponent } from "../pages/contact-page/contact-page.compone
 import { AboutPageComponent } from "../pages/about-page/about-page.component";
 import { SearchPageComponent } from "../pages/search-page/search-page.component";
 import { PostPageComponent } from "../pages/post-page/post-page.component";
+import { UserActivityPageComponent } from "../pages/profile-page/user-activity-page/user-activity-page.component";
+import { AccountSettingsPageComponent } from "../pages/profile-page/account-settings-page/account-settings-page.component";
+import { ProfilePageComponent } from "../pages/profile-page/profile-page.component";
+
+const siteName = "By Personal Blog";
 
 const appRoutes: Routes = [
   {
@@ -17,7 +22,8 @@ const appRoutes: Routes = [
     children: [
       {
         path: "",
-        component: HomePageComponent
+        component: HomePageComponent,
+        title: `Home - ${siteName}`,
       },
       {
         path: "categories",
@@ -25,6 +31,7 @@ const appRoutes: Routes = [
           {
             path: "",
             component: CategoriesPageComponent,
+            title: `Categories - ${siteName}`,
           },
           {
             path: ":id",
@@ -34,19 +41,38 @@ const appRoutes: Routes = [
       },
       {
         path: "contact",
-        component: ContactPageComponent
+        component: ContactPageComponent,
+        title: `Contact - ${siteName}`
       },
       {
         path: "about",
-        component: AboutPageComponent
+        component: AboutPageComponent,
+        title: `About - ${siteName}`
       },
       {
         path: "search",
-        component: SearchPageComponent
+        component: SearchPageComponent,
+        title: `Search - ${siteName}`
       },
       {
-        path: "post/:urlPath",
+        path: "post/:urlParam",
         component: PostPageComponent
+      },
+      {
+        path: "profile",
+        component: ProfilePageComponent,
+        children: [
+          {
+            path: "user-activity",
+            component: UserActivityPageComponent,
+            title: `User Activity - ${siteName}`
+          },
+          {
+            path: "account-settings",
+            component: AccountSettingsPageComponent,
+            title: `Account Settings - ${siteName}`
+          },
+        ],
       },
     ],
   },

@@ -2,18 +2,19 @@ mat-toolbar {
   position: fixed;
   top: 0;
   z-index: 100;
+  display: flex;
+  justify-content: center;
 }
 
-.full {
+.header-full {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  width: 100%;
-  /* Padding-left is 192 to subtract the button padding */
-  padding: 0 200px 0 192px;
+  width: 80%;
+  max-width: 1720px;
 }
 
-.full nav ul {
+.header-full nav ul {
   display: flex;
   gap: 6px;
 }
@@ -24,11 +25,11 @@ ul li a {
   padding: 8px;
   background-color: transparent;
   font-weight: normal;
-  border-radius: 4px;
+  border-radius: 8px;
 }
 
 ul li a.active {
-  background-color: #0376bd;
+  background-color: #0074bb;
 }
 
 
@@ -77,53 +78,31 @@ button {
 
 .profile-container {
   position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .right-container .profile-container img {
   width: 40px;
 }
 
-
 .profile-name {
   font-size: 1.1rem;
-}
-
-.profile-nav {
-  position: absolute;
-  width: 100%;
-  top: calc(100% + 4px);
-  left: 0;
-  display: none;
-  background-color: #fff;
-  border-radius: 0px 0px 4px 4px;
-  border: 1px solid #aaa;
-  border-top: none;
-}
-
-.profile-nav.opened {
-  display: block;
-}
-
-.profile-nav ul {
-  flex-direction: column;
-  gap: 0px !important;
-}
-
-.profile-nav a {
-  cursor: pointer;
-  padding: 5px 10px;
-}
-.profile-nav a:not(:last-of-type) {
-  border-bottom: 1px solid #aaa;
-}
-
-.profile-nav a {
-  background-color: #3f51b5;
-  font-size: 0.9rem;
-  font-weight: normal;
   color: #fff;
 }
 
-.profile-nav li {
-  margin: 0;
+.divider {
+  height: 20px;
+  width: 1px;
+  background-color: #fff;
+}
+
+.logout {
+  height: 56px;
+  width: max-content;
+  padding: 8px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }

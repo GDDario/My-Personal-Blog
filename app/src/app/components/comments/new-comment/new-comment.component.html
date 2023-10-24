@@ -1,0 +1,15 @@
+<div class="new-comment-container" >
+  <form [formGroup]="form" (ngSubmit)="postComment()">
+    <textarea matInput #newComment rows="6" formControlName="newComment"></textarea>
+    <div class="button-container">
+      <button type="submit" color="primary" [disabled]="form.invalid" mat-button>
+        Send
+        <mat-icon iconPositionEnd>send</mat-icon>
+      </button>
+      <button type="button" class="delete" mat-button (click)="discardComment()">
+        Discard
+        <mat-icon iconPositionEnd>delete</mat-icon>
+      </button>
+    </div>
+  </form>
+</div>

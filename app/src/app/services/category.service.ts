@@ -1,42 +1,40 @@
 import { Injectable } from '@angular/core';
-import { Category } from '../models/category.model';
 import { BehaviorSubject, Observable, of } from 'rxjs';
+import { HttpClient } from '@angular/common/http';
+
+import { mockCategories } from 'src/assets/mock/categories.mock';
+import { Category } from '../models/category.model';
+import api from 'src/assets/json/api.json';
+import { CategoryInterface } from '../interfaces/category.interface';
 
 @Injectable({
   providedIn: 'root'
 })
 export class CategoryService {
-  public categorySubject = new BehaviorSubject<Category>(new Category({id: 0}));
+  public categoriesSubject = new BehaviorSubject<Category[]>([]);
 
-  private categories: Category[] = [
-    new Category({ id: 1, name: "Open Source" }),
-    new Category({ id: 2, name: "Free" }),
-    new Category({ id: 3, name: "Linux" }),
-    new Category({ id: 4, name: "Hardware" }),
-    new Category({ id: 5, name: "Software" }),
-  ];
+  constructor(private httpClient: HttpClient) { }
 
-  public getCategories(): Observable<Category[]> {
-    return of(this.categories);
-  }
-
-  public getById(id: number): Category {
-    let category: Category = new Category({id: 1, name: "Open Source"});
-    for (let i = 0; i < this.categories.length; i++) {
-      if (this.categories[i].getId() == id) {
-        category = this.categories[i];
+  public loadCategories(): void {
+    let categories: Category[] = [];
+    this.httpClient.get<CategoryInterface[]>(`${api.path}/category`).subscribe((response: CategoryInterface[]) => {
+      for (let i = 0; i < response.length; i++) {
+        categories.push(new Category({ id: response[i].id, name: response[i].name }));
       }
-    }
-    return category;
+      this.categoriesSubject.next(categories);
+    });
   }
 
   public selectCategory(id: number): void {
-    for (let i = 0; i < this.categories.length; i++) {
-      if (this.categories[i].getId() == id) {
-        this.categories[i].select();
-      } else {
-        this.categories[i].unselect();
+    this.categoriesSubject.subscribe((categories: Category[]) => {
+      for (let i = 0; i < categories.length; i++) {
+        if (categories[i].getId() == id) {
+          categories[i].select();
+        } else {
+          categories[i].unselect();
+        }
       }
-    }
+    })
+
   }
 }

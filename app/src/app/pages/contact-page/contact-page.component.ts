@@ -27,6 +27,5 @@ export class ContactPageComponent implements OnInit {
 
   public onSubmit(): void {
     console.log(this.contactForm);
-
   }
 }

@@ -1,7 +1,11 @@
 /* You can add global styles to this file, and also import other style files */
 
 /* Material */
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
 /* Material */
 
 * {
@@ -23,8 +27,11 @@ ul {
   display: flex;
   justify-content: space-between;
   gap: 52px;
-  padding: 40px 200px;
-  min-height: calc(100vh - 216px); /* 198px of the footer */
+  width: 80%;
+  max-width: 1720px;
+  padding: 40px 0;
+  min-height: calc(100vh - 216px);
+  /* 198px of the footer */
   margin: 50px auto 0 auto;
 }
 
@@ -57,3 +64,15 @@ ul {
   gap: 24px;
 }
 
+.modal-body {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 38vh;
+  transition: 0.3s ease;
+}
+
+.modal-body h1 {
+  text-align: center;
+  color: #a2a2a2;
+}

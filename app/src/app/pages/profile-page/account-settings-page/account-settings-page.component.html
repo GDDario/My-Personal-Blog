@@ -1,0 +1,32 @@
+<input type="file" #pictureSelector style="display: none;">
+<div class="main-container" unselectable>
+  <div class="profile-picture">
+    <div class="hover" (click)="openPictureSelector()">
+      <span>Change picture</span>
+      <mat-icon>image_search</mat-icon>
+    </div>
+  </div>
+  <mat-divider></mat-divider>
+  <form [formGroup]="form" (ngSubmit)="onSubmit()">
+    <mat-form-field>
+      <mat-label>Username</mat-label>
+      <input formControlName="username" #username matInput>
+      <mat-error *ngIf="form.get('username').invalid">You must enter a value.</mat-error>
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Email</mat-label>
+      <input #email formControlName="email" matInput>
+      <mat-error *ngIf="form.get('email').invalid">{{ getEmailError() }}</mat-error>
+    </mat-form-field>
+    <div class="button-container">
+      <button type="submit" color="primary" [disabled]="form.invalid" mat-raised-button>
+        Submit changes
+        <mat-icon iconPositionEnd>edit</mat-icon>
+      </button>
+      <button type="button" style="margin-left: 6px" color="primary" [disabled]="form.invalid" mat-raised-button (click)="openDialogChangePassword()">
+        Change password
+        <mat-icon iconPositionEnd>key</mat-icon>
+      </button>
+    </div>
+  </form>
+</div>

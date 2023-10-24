@@ -1,5 +1,5 @@
 <mat-toolbar color="primary" class="mat-toolbar">
-  <div class="full">
+  <div class="header-full">
     <nav>
       <ul class="unselectable">
         <li matRipple>
@@ -33,28 +33,18 @@
         </button>
       </div>
 
-      <div *ngIf="isLoggedIn" class="profile-container unselectable" appProfileMenu>
-        <div class="profile" matRipple>
-          <img src="../../../assets/img/default-user-icon.png" alt="Your profile">
-          <span class="profile-name">Profile name</span>
-        </div>
-
-        <nav class="profile-nav">
-          <ul>
-            <a [routerLink]="" matRipple>
-              <li>Profile</li>
-            </a>
-            <a [routerLink]="" matRipple>
-              <li>Settings</li>
-            </a>
-            <a [routerLink]="" matRipple>
-              <li>Logout</li>
-            </a>
-          </ul>
-        </nav>
+      <div *ngIf="user != null" class="profile-container unselectable">
+          <a [routerLink]="['/profile/user-activity']" matRipple class="profile">
+            <img src="../../../assets/img/default-user-icon.png" alt="Your profile">
+            <span class="profile-name">{{ user.getUsername() }}</span>
+          </a>
+          <div class="divider"></div>
+          <div class="logout" (click)="logout()" matRipple>
+            <mat-icon>logout</mat-icon>
+          </div>
       </div>
 
-      <div *ngIf="!isLoggedIn" class="profile-container unselectable">
+      <div *ngIf="user == null" class="profile-container unselectable" (click)="openDialog()">
         <div class="profile" matRipple>
           <img src="../../../assets/img/default-user-icon.png" alt="Your profile">
           <span class="profile-name">Login</span>

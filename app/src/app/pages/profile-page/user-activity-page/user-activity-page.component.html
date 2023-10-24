@@ -1,0 +1,7 @@
+<main class="unique">
+  <ul *ngIf="user != null">
+    <li>Posts read: {{ user.getPostsRead() }}</li>
+    <li>Comments made: {{ user.getCommentsMade() }}</li>
+    <li>Mentions: {{ mentions }}</li>
+  </ul>
+</main>

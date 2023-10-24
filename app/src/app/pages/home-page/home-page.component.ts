@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { PostInterface } from 'src/app/interfaces/post.interface';
+import { Category } from 'src/app/models/category.model';
 import { Post } from 'src/app/models/post.model';
 import { PostService } from 'src/app/services/post.service';
 
@@ -8,15 +10,30 @@ import { PostService } from 'src/app/services/post.service';
   styleUrls: ['./home-page.component.css']
 })
 export class HomePageComponent implements OnInit {
-  public postList: Post[];
+  public lastPosts: Post[] = [];
   public isLoading: boolean = false;
   public page: number = 1;
 
   constructor(private postService: PostService) { }
 
   public ngOnInit(): void {
-    this.fakeLoading();
-    this.postList = this.postService.getLastPosts(this.page);
+
+    this.postService.getLastPosts(this.page).subscribe((response: PostInterface[]) => {
+      for (let i = 0; i < response.length; i++) {
+        this.lastPosts.push(new Post(
+          {
+            id: response[i].id,
+            title: response[i].title,
+            description: response[i].description,
+            dateString: response[i].date,
+            editDateString: response[i].editDate,
+            imageId: response[i].imageId,
+            category: new Category({id: response[i].category.id, name: response[i].category.name}),
+            urlParam: response[i].urlParam,
+          }
+        ));
+      }
+    });
   }
 
   /**

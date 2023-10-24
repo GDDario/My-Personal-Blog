@@ -1,11 +1,17 @@
 <div class="content">
   <main>
-    <h1>{{ post.getTitle() }}</h1>
-    <h3 class="post-details">
-      {{ 'Written in ' + post.getFormatedDate() }}
-    </h3>
-    <img [src]="'../../../assets/img/' + post.getImageId()" alt="Post image">
-    <div class="post-content" #postContent [innerHTML]="content"></div>
+    <div *ngIf="!isLoading">
+      <h1>{{ post.getTitle() }}</h1>
+      <h3 class="post-details">
+        {{ 'Written in ' + post.getFormatedDate() }}
+        <span *ngIf="post.getEditDate() != null">{{ " - Edited in " + post.getEditDate() }}</span>
+      </h3>
+      <img [src]="'../../../assets/img/' + post.getImageId()" alt="Post image">
+      <div class="post-content" #postContent [innerHTML]="content"></div>
+    </div>
+
   </main>
   <app-aside></app-aside>
 </div>
+
+<app-comment-list [postId]="post.getId()"></app-comment-list>

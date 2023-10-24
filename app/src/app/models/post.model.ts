@@ -9,21 +9,51 @@ export class Post {
   private editDate: Date;
   private imageId: string;
   private category: Category;
-  private urlPath: string;
+  private urlParam: string;
 
-  constructor({ id, title, date, editDate, description, content, imageId, category, urlPath }: {
-    id?: number, title?: string, date?: Date, editDate?: Date,
-    description?: string, content?: string, imageId?: string, category?: Category, urlPath?: string
+  constructor({ id, title, dateString, editDateString, description, content, imageId, category, urlParam }: {
+    id?: number, title?: string, dateString?: string, editDateString?: string,
+    description?: string, content?: string, imageId?: string, category?: Category, urlParam?: string
   }) {
+
     if (id != null) this.id = id;
     if (title != null) this.title = title;
-    if (date != null) this.date = date;
-    if (editDate != null) this.editDate = editDate;
+    if (dateString != null) {
+
+      const dateParts = dateString.split(/[\s-:]/); // Split the string into an array of date and time parts
+
+      // Construct a Date object from the parts (subtract 1 from month because months are 0-based in JavaScript)
+      const date = new Date(
+        parseInt(dateParts[0]),
+        parseInt(dateParts[1]) - 1,
+        parseInt(dateParts[2]),
+        parseInt(dateParts[3]),
+        parseInt(dateParts[4]),
+        parseInt(dateParts[5])
+      );
+
+      this.date = date;
+    }
+    if (editDateString != null) {
+      const dateParts = editDateString.split(/[\s-:]/); // Split the string into an array of date and time parts
+
+      // Construct a Date object from the parts (subtract 1 from month because months are 0-based in JavaScript)
+      const date = new Date(
+        parseInt(dateParts[0]),
+        parseInt(dateParts[1]) - 1,
+        parseInt(dateParts[2]),
+        parseInt(dateParts[3]),
+        parseInt(dateParts[4]),
+        parseInt(dateParts[5])
+      );
+
+      this.editDate = date;
+    };
     if (description != null) this.description = description;
     if (content != null) this.content = content;
     if (imageId != null) this.imageId = imageId;
     if (category != null) this.category = category;
-    if (urlPath != null) this.urlPath = urlPath;
+    if (urlParam != null) this.urlParam = urlParam;
   }
 
   public getId(): number {
@@ -82,11 +112,11 @@ export class Post {
     this.category = category;
   }
 
-  public getUrlPath(): string {
-    return this.urlPath;
+  public getUrlParam(): string {
+    return this.urlParam;
   }
-  public setUrlPath(urlPath: string): void {
-    this.urlPath = urlPath;
+  public setUrlParam(urlParam: string): void {
+    this.urlParam = urlParam;
   }
 
   public getFormatedDate(): string {

@@ -1,0 +1,52 @@
+.comment-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 8px;
+  background-color: rgb(238, 238, 238);
+  border-radius: 4px 0 4px 0;
+  border: 1px solid #cecece;
+  padding: 8px;
+}
+
+.user-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+}
+
+.user-picture {
+  width: 30px;
+}
+
+.comment-body {
+  padding: 8px;
+  border-radius: 0 4px 0 4px;
+  border: 1px solid #cecece;
+  border-top: none;
+}
+
+.comment-body p {
+  margin: 0;
+}
+
+.comment-footer {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.like {
+  padding: 4px;
+  cursor: pointer;
+}
+
+.relatedComments {
+  width: 80%;
+  margin-left: 24px;
+}
+
+.comment {
+  margin-top: 24px;
+}
