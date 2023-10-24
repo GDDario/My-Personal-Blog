@@ -25,7 +25,7 @@ public class UserController {
         if (users.isEmpty()) {
             return ResponseEntity.notFound().build();
         }
-        return ResponseEntity.ok().body(userService.getUsers(page));
+        return ResponseEntity.ok().body(users);
     }
 
     @GetMapping("/user/auth")

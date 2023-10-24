@@ -4,9 +4,6 @@ import java.util.List;
 import java.util.Optional;
 
 import dario.gabriel.mypersonalblog.util.PaginationUtil;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageRequest;
-import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import dario.gabriel.mypersonalblog.model.Role;
@@ -47,7 +44,7 @@ public class UserService {
     }
 
     public List<User> getUsers(int page) {
-        return userRepository.findAll(PaginationUtil.normalizePage(page));
+        return userRepository.findByPage(PaginationUtil.normalize(page, 50));
     }
 
     public User getUserByUsername(String username) {
