@@ -4,9 +4,8 @@ import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
 
-import dario.gabriel.mypersonalblog.model.Category;
 import dario.gabriel.mypersonalblog.repository.CategoryRepository;
-import jakarta.persistence.EntityNotFoundException;
+import dario.gabriel.mypersonalblog.util.PaginationUtil;
 import org.springframework.stereotype.Service;
 
 import dario.gabriel.mypersonalblog.model.Post;
@@ -20,14 +19,19 @@ public class PostService {
 	private final PostRepository postRepository;
 	private final CategoryRepository categoryRepository;
 
-	public List<Post> getAll() {
-		return this.postRepository.findAll();
+	public List<Post> getPostsByPage(int page) {
+		return this.postRepository.findByPage(PaginationUtil.normalize(page, 10));
 	}
 
 	public Post getById(long id) {
 		Optional<Post> post = postRepository.findById(id);
         return post.orElse(null);
     }
+
+	public List<Post> getByCategoryId(long id, int page) {
+		List<Post> posts = postRepository.findByCategoryId(id, PaginationUtil.normalize(page, 10));
+		return posts;
+	}
 
 	public Post getByUrlParam(String urlPath) {
 		return this.postRepository.findByUrlParam(urlPath);

@@ -1,17 +1,15 @@
 package dario.gabriel.mypersonalblog.controller;
 
-import java.util.List;
-
-import dario.gabriel.mypersonalblog.dto.CategoryDTO;
-import dario.gabriel.mypersonalblog.model.Category;
+import dario.gabriel.mypersonalblog.model.Post;
+import dario.gabriel.mypersonalblog.model.User;
 import dario.gabriel.mypersonalblog.model.httpResponses.MessageResponse;
+import dario.gabriel.mypersonalblog.service.PostService;
+import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import dario.gabriel.mypersonalblog.model.Post;
-import dario.gabriel.mypersonalblog.service.PostService;
-import lombok.RequiredArgsConstructor;
+import java.util.List;
 
 @RestController
 @RequiredArgsConstructor
@@ -20,8 +18,12 @@ public class PostController {
 	private final PostService postService;
 	
 	@GetMapping("/post")
-	public List<Post> getPosts() {
-		return this.postService.getAll();
+	public ResponseEntity<List<Post>> getPosts(@RequestParam(defaultValue = "1") int page) {
+		List<Post> posts = postService.getPostsByPage(page);
+		if (posts.isEmpty()) {
+			return ResponseEntity.notFound().build();
+		}
+		return ResponseEntity.ok().body(posts);
 	}
 	
 	@GetMapping("/post/{postId}")
@@ -32,6 +34,12 @@ public class PostController {
 			return ResponseEntity.status(HttpStatus.NOT_FOUND).body(messageResponse);
 		}
 		return ResponseEntity.ok().body(post);
+	}
+
+	@GetMapping("/post/category/{categoryId}")
+	public ResponseEntity<?> getPostByCategoryId(@PathVariable(value = "categoryId") long categoryId, @RequestParam(defaultValue = "1") int page) {
+		List<Post> posts = this.postService.getByCategoryId(categoryId, page);
+		return ResponseEntity.ok().body(posts);
 	}
 
 	@GetMapping("/post/url-param/{urlParam}")
