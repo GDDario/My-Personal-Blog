@@ -1,8 +1,7 @@
 package dario.gabriel.mypersonalblog.controller;
 
 import dario.gabriel.mypersonalblog.model.Post;
-import dario.gabriel.mypersonalblog.model.User;
-import dario.gabriel.mypersonalblog.model.httpResponses.MessageResponse;
+import dario.gabriel.mypersonalblog.dto.httpResponses.MessageResponse;
 import dario.gabriel.mypersonalblog.service.PostService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;

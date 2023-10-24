@@ -2,7 +2,7 @@ package dario.gabriel.mypersonalblog.controller;
 
 import dario.gabriel.mypersonalblog.dto.CategoryDTO;
 import dario.gabriel.mypersonalblog.model.Category;
-import dario.gabriel.mypersonalblog.model.httpResponses.MessageResponse;
+import dario.gabriel.mypersonalblog.dto.httpResponses.MessageResponse;
 import dario.gabriel.mypersonalblog.service.CategoryService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;

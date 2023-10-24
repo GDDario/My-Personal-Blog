@@ -1,6 +1,6 @@
 package dario.gabriel.mypersonalblog.util;
 
-import dario.gabriel.mypersonalblog.model.httpResponses.MessageResponse;
+import dario.gabriel.mypersonalblog.dto.httpResponses.MessageResponse;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import org.springframework.http.HttpStatus;
