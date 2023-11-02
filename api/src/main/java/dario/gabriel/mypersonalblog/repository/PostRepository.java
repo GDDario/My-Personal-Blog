@@ -11,11 +11,14 @@ import java.util.List;
 @Repository
 public interface PostRepository extends JpaRepository<Post, Long> {
     @Query(value = "SELECT * FROM post ORDER BY id DESC LIMIT :page, 10", nativeQuery = true)
-    public List<Post> findByPage(@Param("page") int page);
+    List<Post> findByPage(@Param("page") int page);
 
     @Query(value = "SELECT * FROM post WHERE category_id = :categoryId ORDER BY id DESC LIMIT :page, 10", nativeQuery = true)
-    public List<Post> findByCategoryId(@Param("categoryId") long categoryId, @Param("page") int page);
+    List<Post> findByCategoryId(@Param("categoryId") long categoryId, @Param("page") int page);
 
     @Query(value = "SELECT * FROM post WHERE url_param = :urlParam", nativeQuery = true)
-    public Post findByUrlParam(@Param("urlParam") String urlParam);
+    Post findByUrlParam(@Param("urlParam") String urlParam);
+
+    @Query(value = "UPDATE post SET views = views + 1 WHERE id = :postId", nativeQuery = true)
+    void incrementView(@Param(value = "postId") long postId);
 }

@@ -1,23 +1,26 @@
 package dario.gabriel.mypersonalblog.service;
 
+import dario.gabriel.mypersonalblog.dto.ReadPostDTO;
+import dario.gabriel.mypersonalblog.model.Post;
+import dario.gabriel.mypersonalblog.repository.PostRepository;
+import dario.gabriel.mypersonalblog.repository.UserReadPostRepository;
+import dario.gabriel.mypersonalblog.repository.UserRepository;
+import dario.gabriel.mypersonalblog.util.PaginationUtil;
+import lombok.RequiredArgsConstructor;
+import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Service;
+
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
-
-import dario.gabriel.mypersonalblog.repository.CategoryRepository;
-import dario.gabriel.mypersonalblog.util.PaginationUtil;
-import org.springframework.stereotype.Service;
-
-import dario.gabriel.mypersonalblog.model.Post;
-import dario.gabriel.mypersonalblog.repository.PostRepository;
-import lombok.RequiredArgsConstructor;
 
 @Service
 @RequiredArgsConstructor
 public class PostService {
 
 	private final PostRepository postRepository;
-	private final CategoryRepository categoryRepository;
+	private final UserRepository userRepository;
+	private final UserReadPostRepository userReadPostRepository;
 
 	public List<Post> getPostsByPage(int page) {
 		return this.postRepository.findByPage(PaginationUtil.normalize(page, 10));
@@ -77,4 +80,12 @@ public class PostService {
 		postRepository.deleteById(id);
 		return true;
 	}
+
+    public ResponseEntity<?> markPostAsRead(ReadPostDTO dto) {
+		userReadPostRepository.save(dto.getUserId(), dto.getPostId(), dto.getDate());
+		userRepository.incrementPostsRead(dto.getUserId());
+		postRepository.incrementView(dto.getPostId());
+
+		return ResponseEntity.ok().build();
+    }
 }
