@@ -12,4 +12,7 @@ import java.time.LocalDateTime;
 public interface UserReadPostRepository extends JpaRepository<UserReadPost, Long> {
     @Query(value = "INSERT INTO user_read_post (user_id, post_id, date) values (:userId, :postId, :date)", nativeQuery = true)
     void save(@Param(value = "userId") long userId, @Param(value = "postId") long postId, @Param(value = "date") LocalDateTime date);
+
+    @Query(value = "SELECT * FROM user_read_post WHERE post_id = :postId and user_id = :userId LIMIT 1", nativeQuery = true)
+    UserReadPost findByPostIdAndUserId(@Param(value = "postId") long postId, @Param(value = "userId") long userId);
 }

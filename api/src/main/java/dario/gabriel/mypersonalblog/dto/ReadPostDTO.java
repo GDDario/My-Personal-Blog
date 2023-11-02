@@ -15,4 +15,13 @@ public class ReadPostDTO {
     private int userId;
     private int postId;
     private LocalDateTime date;
+
+    @Override
+    public String toString() {
+        return "ReadPostDTO{" +
+                "userId=" + userId +
+                ", postId=" + postId +
+                ", date=" + date +
+                '}';
+    }
 }

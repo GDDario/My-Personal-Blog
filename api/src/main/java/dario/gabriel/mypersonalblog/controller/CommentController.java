@@ -1,7 +1,7 @@
 package dario.gabriel.mypersonalblog.controller;
 
-import dario.gabriel.mypersonalblog.dto.httpRequests.CommentLikeDTO;
-import dario.gabriel.mypersonalblog.dto.httpRequests.CreateCommentDTO;
+import dario.gabriel.mypersonalblog.dto.CommentLikeDTO;
+import dario.gabriel.mypersonalblog.dto.CreateCommentDTO;
 import dario.gabriel.mypersonalblog.model.Comment;
 import dario.gabriel.mypersonalblog.service.CommentService;
 import lombok.RequiredArgsConstructor;

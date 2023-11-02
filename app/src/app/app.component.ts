@@ -1,16 +1,15 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
-import { NavigationEnd, Router } from '@angular/router';
-import { CategoryService } from './services/category.service';
-import { Category } from './models/category.model';
-import { AuthenticationService } from './services/authentication.service';
-import { UserService } from './services/user.service';
-import { Subscription } from 'rxjs';
+import {Component, OnDestroy, OnInit} from '@angular/core';
+import {NavigationEnd, Router} from '@angular/router';
+import {CategoryService} from './services/category.service';
+import {AuthenticationService} from './services/authentication.service';
+import {UserService} from './services/user.service';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
+
 export class AppComponent implements OnInit, OnDestroy {
   constructor(private categoryService: CategoryService, private router: Router, private authenticationService: AuthenticationService, private userService: UserService) { }
 

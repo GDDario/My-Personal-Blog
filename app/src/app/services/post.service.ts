@@ -1,17 +1,16 @@
-import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { mockPosts } from 'src/assets/mock/posts.mock';
-
-import { Post } from '../models/post.model';
-import { PostInterface } from '../interfaces/post.interface';
+import {Injectable} from '@angular/core';
+import {HttpClient} from '@angular/common/http';
+import {PostInterface} from '../interfaces/post.interface';
 import api from 'src/assets/json/api.json';
-import { Observable } from 'rxjs';
+import {Observable} from 'rxjs';
+import {UserService} from "./user.service";
+import {User} from "../models/user.model";
 
 @Injectable({
   providedIn: 'root'
 })
 export class PostService {
-  constructor(private httpClient: HttpClient) { }
+  constructor(private httpClient: HttpClient, private userService: UserService) { }
 
   /**
    * @param page page number to be loaded. Each page has the maximum size of 10 posts.
@@ -50,5 +49,19 @@ export class PostService {
    */
   public getLastPostsRead() {
     // return this.posts
+  }
+
+  public markAsRead(postId: number): void {
+    let userId: number = this.userService.currentUser.value.getId();
+    let date: Date = new Date();
+    this.httpClient.put(`${api.path}/post/user`, {
+      "userId": userId,
+      "postId": postId,
+      "date": date.toISOString()
+    }).subscribe();
+  }
+
+  public getIsAlreadyRead(postId: number): Observable<Object> {
+    return this.httpClient.get(`${api.path}/post/isRead/${postId}`);
   }
 }

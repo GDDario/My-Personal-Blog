@@ -1,4 +1,4 @@
-package dario.gabriel.mypersonalblog.dto.httpRequests;
+package dario.gabriel.mypersonalblog.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;

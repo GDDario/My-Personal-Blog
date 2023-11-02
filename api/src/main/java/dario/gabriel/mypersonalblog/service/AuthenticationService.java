@@ -6,9 +6,9 @@ import org.springframework.stereotype.Service;
 import dario.gabriel.mypersonalblog.model.Role;
 import dario.gabriel.mypersonalblog.model.User;
 import dario.gabriel.mypersonalblog.repository.UserRepository;
-import dario.gabriel.mypersonalblog.dto.httpResponses.AuthenticationRequest;
+import dario.gabriel.mypersonalblog.dto.httpRequests.AuthenticationRequest;
 import dario.gabriel.mypersonalblog.dto.httpResponses.AuthenticationResponse;
-import dario.gabriel.mypersonalblog.dto.httpResponses.RegisterRequest;
+import dario.gabriel.mypersonalblog.dto.httpRequests.RegisterRequest;
 import lombok.RequiredArgsConstructor;
 
 @Service

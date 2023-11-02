@@ -1,4 +1,4 @@
-package dario.gabriel.mypersonalblog.dto.httpResponses;
+package dario.gabriel.mypersonalblog.dto.httpRequests;
 
 public class RegisterRequest {
 	private String fullName;

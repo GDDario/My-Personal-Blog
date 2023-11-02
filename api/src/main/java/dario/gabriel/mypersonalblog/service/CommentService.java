@@ -1,8 +1,8 @@
 package dario.gabriel.mypersonalblog.service;
 
 import dario.gabriel.mypersonalblog.dto.CommentDTO;
-import dario.gabriel.mypersonalblog.dto.httpRequests.CommentLikeDTO;
-import dario.gabriel.mypersonalblog.dto.httpRequests.CreateCommentDTO;
+import dario.gabriel.mypersonalblog.dto.CommentLikeDTO;
+import dario.gabriel.mypersonalblog.dto.CreateCommentDTO;
 import dario.gabriel.mypersonalblog.dto.httpResponses.MessageResponse;
 import dario.gabriel.mypersonalblog.model.Comment;
 import dario.gabriel.mypersonalblog.model.User;

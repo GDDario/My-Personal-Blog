@@ -4,6 +4,7 @@ import api from "../../assets/json/api.json";
 import { BehaviorSubject } from 'rxjs';
 import { AuthenticationDialogComponent } from '../components/dialogs/authentication-dialog/authentication-dialog.component';
 import { MatDialog } from '@angular/material/dialog';
+import {UserService} from "./user.service";
 
 @Injectable({
   providedIn: 'root'

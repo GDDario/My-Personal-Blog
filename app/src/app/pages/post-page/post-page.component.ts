@@ -6,6 +6,7 @@ import { Category } from 'src/app/models/category.model';
 import { Post } from 'src/app/models/post.model';
 import { CategoryService } from 'src/app/services/category.service';
 import { PostService } from 'src/app/services/post.service';
+import {AuthenticationService} from "../../services/authentication.service";
 
 @Component({
   selector: 'app-post-page',
@@ -17,12 +18,12 @@ export class PostPageComponent implements OnInit {
   public post: Post = new Post({});
   public content: SafeHtml;
   public showComments: boolean = false;
-  public
 
-  constructor(private activatedRoute: ActivatedRoute, private postService: PostService, private categoryService: CategoryService, private sanitizer: DomSanitizer) {
+  constructor(private activatedRoute: ActivatedRoute, private postService: PostService, private categoryService: CategoryService, private sanitizer: DomSanitizer, private authenticationService: AuthenticationService) {
   }
 
   public ngOnInit(): void {
+
     this.activatedRoute.params.subscribe((params: Params) => {
       this.postService.getByUrlPath(params["urlParam"]).subscribe((response: PostInterface) => {
         this.post = new Post({
@@ -39,7 +40,19 @@ export class PostPageComponent implements OnInit {
         this.categoryService.selectCategory(this.post.getCategory().getId());
         this.content = this.sanitizer.bypassSecurityTrustHtml(this.post.getContent());
         this.isLoading = false;
+        this.markAsRead();
       });
     });
+  }
+
+  private markAsRead(): void {
+    if (this.authenticationService.isLoggedIn()) {
+      this.postService.getIsAlreadyRead(this.post.getId()).subscribe((response) => {
+        console.log(response)
+          if (response["answer"] === "false") {
+            this.postService.markAsRead(this.post.getId());
+          }
+      });
+    }
   }
 }

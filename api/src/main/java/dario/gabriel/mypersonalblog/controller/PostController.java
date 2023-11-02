@@ -1,8 +1,10 @@
 package dario.gabriel.mypersonalblog.controller;
 
 import dario.gabriel.mypersonalblog.dto.ReadPostDTO;
-import dario.gabriel.mypersonalblog.model.Post;
 import dario.gabriel.mypersonalblog.dto.httpResponses.MessageResponse;
+import dario.gabriel.mypersonalblog.model.Post;
+import dario.gabriel.mypersonalblog.model.User;
+import dario.gabriel.mypersonalblog.service.JwtService;
 import dario.gabriel.mypersonalblog.service.PostService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -24,6 +26,11 @@ public class PostController {
             return ResponseEntity.notFound().build();
         }
         return ResponseEntity.ok().body(posts);
+    }
+
+    @GetMapping("/post/isRead/{postId}")
+    public ResponseEntity<?> getIsPostRead(@PathVariable(value = "postId") long id, @RequestHeader("Authorization") String authorizationHeader) {
+        return postService.isPostRead(id, authorizationHeader.substring(7));
     }
 
     @GetMapping("/post/{postId}")
@@ -88,4 +95,6 @@ public class PostController {
         messageResponse.setMessage("Deleted successfully!");
         return ResponseEntity.ok().body(messageResponse);
     }
+
+
 }

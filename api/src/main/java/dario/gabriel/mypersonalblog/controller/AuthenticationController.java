@@ -1,8 +1,8 @@
 package dario.gabriel.mypersonalblog.controller;
 
-import dario.gabriel.mypersonalblog.dto.httpResponses.AuthenticationRequest;
+import dario.gabriel.mypersonalblog.dto.httpRequests.AuthenticationRequest;
 import dario.gabriel.mypersonalblog.dto.httpResponses.AuthenticationResponse;
-import dario.gabriel.mypersonalblog.dto.httpResponses.RegisterRequest;
+import dario.gabriel.mypersonalblog.dto.httpRequests.RegisterRequest;
 import dario.gabriel.mypersonalblog.service.AuthenticationService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
