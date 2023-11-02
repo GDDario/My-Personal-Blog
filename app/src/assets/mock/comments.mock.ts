@@ -8,24 +8,6 @@ export const mockComments: Comment[] = [
     likes: 3,
     content: "Another sample comment 1",
     date: new Date(),
-    answers: [
-      new Comment({
-        id: 11,
-        user: new User({ picture: "default-user-icon.png", username: "JHNDOE", }),
-        likes: 3,
-        content: "Another sample comment 1",
-        date: new Date(),
-        answers: [
-          new Comment({
-            id: 13,
-            user: new User({ picture: "default-user-icon.png", username: "JHNDOE", }),
-            likes: 3,
-            content: "Another sample comment 1",
-            date: new Date(),
-          })
-        ]
-      }),
-    ],
   }),
   new Comment({
     id: 4,

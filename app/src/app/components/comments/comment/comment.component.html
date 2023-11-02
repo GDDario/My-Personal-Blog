@@ -4,9 +4,16 @@
       <img class="user-picture" [src]="getImagePath()">
       <span>{{ comment.getUser().getUsername() }}</span>
     </div>
-    <div class="dates-container">
-      <span>{{ comment.getDate() | date }}</span>
-      <span *ngIf="comment.getEditedDate != null">{{ comment.getEditedDate() | date }}</span>
+
+    <div class="right-container">
+      <div class="delete-container" mat-ripple (click)="deleteComment()">
+        <mat-icon *ngIf="isShowDelete" class="unselectable delete-comment">delete</mat-icon>
+      </div>
+
+      <div class="dates-container">
+        <span>{{ comment.getDate() | date }}</span>
+        <span *ngIf="comment.getEditedDate != null">{{ comment.getEditedDate() | date }}</span>
+      </div>
     </div>
   </div>
 
@@ -15,16 +22,11 @@
   </div>
 
   <div class="comment-footer">
-    <div class="like" (click)="likeComment(comment.getId())" matRipple>
-      <mat-icon class="unselectable">thumb_up</mat-icon>
+    <div class="like" (click)="likeComment()" matRipple>
+      <mat-icon [style.color]="comment.getIsLiked() ? 'blue': 'black'" class="unselectable">thumb_up</mat-icon>
     </div>
-    <span *ngIf="comment.getLikes() != 0">{{ comment.getLikes() }} likes</span>
-    <button mat-button color="primary" (click)="addComment()">Comment</button>
+    <span>{{ comment.getLikes() != 1 ? comment.getLikes() + ' likes' : '1 like' }}</span>
   </div>
 
   <div #newComment></div>
-
-  <div class="relatedComments">
-    <app-comment class="comment" *ngFor="let comment of comment.getAnswers(); let i = index" [comment]="comment" [index]="i" [parentIndex]="index"></app-comment>
-  </div>
 </div>

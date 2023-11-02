@@ -7,18 +7,16 @@ export class Comment {
   private content: string;
   private date: Date;
   private editedDate?: Date;
-  private relatedCommentId: number;
-  private answers?: Comment[];
+  private isLiked?: boolean;
 
-  constructor({id, user, likes, content, date, editedDate, answers, relatedCommentId }: {id?: number, user?: User, likes?: number, content?: string, date?: Date, editedDate?: Date, relatedCommentId?: number, answers?: Comment[]}) {
+  constructor({id, user, likes, content, date, editedDate, isLiked }: {id?: number, user?: User, likes?: number, content?: string, date?: Date, editedDate?: Date, isLiked?: boolean}) {
     if (id != null) this.id = id;
     if (user != null) this.user = user;
     if (likes != null) this.likes = likes;
     if (content != null) this.content = content;
     if (date != null) this.date = date;
     if (editedDate != null) this.editedDate = editedDate;
-    if (relatedCommentId != null) this.relatedCommentId = relatedCommentId;
-    if (answers != null) this.answers = answers;
+    if (isLiked != null) this.isLiked = isLiked;
   }
 
   public getId(): number {
@@ -40,6 +38,12 @@ export class Comment {
   }
   public setLikes(likes: number): void {
     this.likes = likes;
+  }
+  public addLike(): void {
+    this.likes = this.likes + 1;
+  }
+  public removeLike(): void {
+    this.likes = this.likes - 1;
   }
 
   public getContent(): string {
@@ -63,17 +67,10 @@ export class Comment {
     this.editedDate = editedDate;
   }
 
-  public getRelatedCommentId(): number {
-    return this.relatedCommentId;
+  public getIsLiked(): boolean {
+    return this.isLiked;
   }
-  public SetRelatedCommentId(relatedCommentId: number): void {
-    this.relatedCommentId = relatedCommentId;
-  }
-
-  public getAnswers(): Comment[] {
-    return this.answers;
-  }
-  public setAnswers(answers: Comment[]): void {
-    this.answers = answers;
+  public setIsLiked(isLiked: boolean): void {
+    this.isLiked = isLiked;
   }
 }

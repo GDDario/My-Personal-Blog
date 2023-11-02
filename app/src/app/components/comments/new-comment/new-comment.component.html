@@ -1,6 +1,6 @@
 <div class="new-comment-container" >
   <form [formGroup]="form" (ngSubmit)="postComment()">
-    <textarea matInput #newComment rows="6" formControlName="newComment"></textarea>
+    <textarea matInput #content rows="6" formControlName="content"></textarea>
     <div class="button-container">
       <button type="submit" color="primary" [disabled]="form.invalid" mat-button>
         Send

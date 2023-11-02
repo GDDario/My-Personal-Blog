@@ -1,9 +1,11 @@
 import { Component, ComponentFactoryResolver, ElementRef, Input, OnDestroy, OnInit, Renderer2, ViewChild, ViewContainerRef } from '@angular/core';
 import { Comment } from 'src/app/models/comment.model';
 import { CommentService } from 'src/app/services/comment.service';
-import { NewCommentComponent } from '../new-comment/new-comment.component';
 import { Subscription } from 'rxjs';
-import { CommentSubjectInterface } from 'src/app/interfaces/comment.interface';
+import { UserService } from 'src/app/services/user.service';
+import { AuthenticationService } from 'src/app/services/authentication.service';
+import { MatDialog } from '@angular/material/dialog';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-comment',
@@ -15,54 +17,56 @@ export class CommentComponent implements OnInit, OnDestroy {
   @Input() public index: number;
   @Input() public parentIndex: number;
   @ViewChild("newComment", { read: ViewContainerRef }) public newComment: ViewContainerRef;
-  public subscription: Subscription;
+  public isloadingLike: boolean = false;
+  public isShowDelete: boolean = false;
 
-  constructor(private commentService: CommentService, private componentFactoryResolver: ComponentFactoryResolver) { }
+  constructor(private authenticationService: AuthenticationService, private userService: UserService, private commentService: CommentService, private snackBar: MatSnackBar) { }
 
   public ngOnInit(): void {
-    this.subscription = this.commentService.isCommenting.subscribe((callback: CommentSubjectInterface) => {
-      if (this.newComment != null && this.newComment.get(0) != null) {
-        if (callback.index == this.index && callback.parentIndex == null) {
-
-          this.newComment.remove(0);
-        } else if (callback.index == this.index && callback.parentIndex != null && this.parentIndex == callback.parentIndex) {
-          this.newComment.remove(0);
-        }
-      }
-    })
-  }
-
-  public getImagePath(): string {
-    const defaultPath = "../../../assets/img/";
-    return defaultPath + this.comment.getUser().getPicture();
-  }
-
-  public likeComment(commentId: number): void {
-
-  }
-
-  public addComment(): void {
-    if (!this.newComment != null && this.newComment.get(0) == null) {
-      const factory = this.componentFactoryResolver.resolveComponentFactory(NewCommentComponent);
-
-      // Create an instance of the component
-      const componentRef = factory.create(this.newComment.injector);
-
-      const componentInstance = componentRef.instance as NewCommentComponent;
-
-      // Add a TypeScript attribute to the component instance
-      componentInstance.index = this.index;
-      if (this.parentIndex != null)
-        componentInstance.parentIndex = this.parentIndex;
-
-      this.newComment.insert(componentRef.hostView);
-
-      // Access the root DOM element of the component
-      const componentRootElement = componentRef.location.nativeElement;
+    if (this.authenticationService.isLoggedIn() && this.userService.currentUser.value.getId() == this.comment.getUser().getId()) {
+      this.isShowDelete = true;
     }
   }
 
+  public getImagePath(): string {
+    return `../../../assets/img/users/${this.comment.getUser().getPicture()}`;
+  }
+
+  public likeComment(): void {
+    if (this.isloadingLike) {
+      return;
+    }
+
+    if (!this.authenticationService.isLoggedIn()) {
+      this.authenticationService.openLoginDialog();
+      return;
+    }
+
+    if (!this.comment.getIsLiked()) {
+      this.commentService.addLike(this.comment.getId()).subscribe(() => {
+        this.comment.addLike();
+        this.comment.setIsLiked(true);
+      });
+    } else {
+      this.commentService.removeLike(this.comment.getId()).subscribe(() => {
+        this.comment.removeLike();
+        this.comment.setIsLiked(false);
+      });
+    }
+  }
+
+  public deleteComment(): void {
+    this.commentService.deleteComment(this.comment.getId()).subscribe((result: boolean) => {
+      this.commentService.refreshSubject.next(true);
+      this.snackBar.open("Comment created", "dismiss", {
+        panelClass: ["snackbar"],
+        horizontalPosition: "right",
+        verticalPosition: "top",
+        duration: 1500,
+      });
+    });
+  }
+
   public ngOnDestroy(): void {
-    this.subscription.unsubscribe();
   }
 }

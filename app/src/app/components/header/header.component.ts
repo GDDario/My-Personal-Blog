@@ -39,10 +39,8 @@ export class HeaderComponent implements OnInit, OnDestroy {
     }
   }
 
-  public openDialog(): void {
-    this.matDialog.open(AuthenticationDialogComponent, {
-      width: "500px",
-    });
+  public login(): void {
+    this.authenticationService.openLoginDialog();
   }
 
   public logout(): void {

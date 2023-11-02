@@ -2,7 +2,13 @@
   <h3>Comments</h3>
   <div class="comments">
 
-    <p *ngIf="comments.length == 0">There are no comments yet.</p>
+    <div>
+      <button *ngIf="!isLoggedIn" mat-raised-button color="primary" (click)="login()">Login to comment</button>
+      <button *ngIf="isLoggedIn" mat-raised-button color="primary" (click)="addComment()">Add a comment</button>
+      <div #newComment></div>
+    </div>
+
+    <p *ngIf="comments.length == 0">There's no comments yet.</p>
     <app-comment *ngFor="let comment of comments; let i = index" [comment]="comment" [index]="i"></app-comment>
   </div>
 </div>

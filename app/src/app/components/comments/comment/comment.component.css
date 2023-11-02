@@ -6,7 +6,7 @@
   background-color: rgb(238, 238, 238);
   border-radius: 4px 0 4px 0;
   border: 1px solid #cecece;
-  padding: 8px;
+  padding: 4px 8px;
 }
 
 .user-container {
@@ -39,6 +39,7 @@
 
 .like {
   padding: 4px;
+  border-radius: 4px;
   cursor: pointer;
 }
 
@@ -49,4 +50,21 @@
 
 .comment {
   margin-top: 24px;
+}
+
+.right-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+}
+
+.delete-container {
+  padding: 2px 4px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.delete-comment {
+  color: #f00;
 }

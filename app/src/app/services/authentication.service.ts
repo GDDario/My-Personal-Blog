@@ -2,6 +2,8 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import api from "../../assets/json/api.json";
 import { BehaviorSubject } from 'rxjs';
+import { AuthenticationDialogComponent } from '../components/dialogs/authentication-dialog/authentication-dialog.component';
+import { MatDialog } from '@angular/material/dialog';
 
 @Injectable({
   providedIn: 'root'
@@ -9,7 +11,7 @@ import { BehaviorSubject } from 'rxjs';
 export class AuthenticationService {
   public loginSubject = new BehaviorSubject<boolean>(false);
 
-  constructor(private httpClient: HttpClient) { }
+  constructor(private httpClient: HttpClient, private matDialog: MatDialog) { }
 
   public login(email: string, password: string) {
     const userLoginData = {
@@ -32,5 +34,11 @@ export class AuthenticationService {
 
   public getToken(): string {
     return localStorage.getItem("token") ?? "";
+  }
+
+  public openLoginDialog(): void {
+    this.matDialog.open(AuthenticationDialogComponent, {
+      width: "500px",
+    });
   }
 }

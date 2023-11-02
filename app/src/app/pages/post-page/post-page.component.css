@@ -13,3 +13,23 @@ img {
 .post-content {
   margin-top: 8px;
 }
+
+.comments-container {
+  width: 80%;
+  max-width: 1720px;
+  margin: 0 auto;
+  overflow: hidden;
+}
+
+.show-comments {
+  width: 300px;
+  background-color: #c9c9c9;
+  padding: 10px 5px;
+  border-radius: 4px;
+  cursor: pointer;
+  border: none;
+  box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5);
+  margin-bottom: 5px;
+  font-weight: bold;
+  font-size: 14px;
+}

@@ -1,11 +1,11 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, Observable, of } from 'rxjs';
+import { BehaviorSubject } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 
 import { mockCategories } from 'src/assets/mock/categories.mock';
 import { Category } from '../models/category.model';
-import api from 'src/assets/json/api.json';
 import { CategoryInterface } from '../interfaces/category.interface';
+import api from 'src/assets/json/api.json';
 
 @Injectable({
   providedIn: 'root'

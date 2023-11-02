@@ -54,7 +54,7 @@ export class AuthenticationDialogComponent implements OnInit {
     this.dialogRef.close();
   }
 
-  login(): void {
+  public login(): void {
     if (this.loginForm.valid) {
       this.authenticationService.login(this.loginForm.get("email").getRawValue(), this.loginForm.get("password").getRawValue()).subscribe((result) => {
         this.snackBar.open("logged successfully", "dismiss", {

@@ -16,6 +16,8 @@ export class PostPageComponent implements OnInit {
   public isLoading: boolean = true;
   public post: Post = new Post({});
   public content: SafeHtml;
+  public showComments: boolean = false;
+  public
 
   constructor(private activatedRoute: ActivatedRoute, private postService: PostService, private categoryService: CategoryService, private sanitizer: DomSanitizer) {
   }
